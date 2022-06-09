@@ -1,14 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 💻 Project
 
-## Getting Started
+This is my personal portfolio, made to present my knowledge and also to learn new things
 
-First, run the development server:
+## 📐 Layout
+
+https://www.figma.com/
+
+## :rocket: Technology
+
+This project was developed with the following technologies:
+
+- [NextJS](https://nextjs.org/)
+- [Axios](https://github.com/axios/axios)
+
+\* For more details, see the **[package.json](./package.json)**
+
+## :notebook: Running
+
 
 ```bash
-npm run dev
-# or
-yarn dev
+# Clone this repository
+$ git clone https://github.com/mauriciofsnts/itsme.git
+
+# Access the project folder in your terminal/cmd
+$ cd itsme
+
+
+# Install the dependencies
+$ yarn
+
+# Run the application
+$ yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
- 
+---
+
+
+## License
+
+<img src="https://i.imgur.com/AuQQfiB.png" alt="GPL Logo" height="100px" />
+
+This project is licensed under [GNU General Public License v2.0](./LICENSE).
+
+This program is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
