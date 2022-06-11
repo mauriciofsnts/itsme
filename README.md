@@ -1,12 +1,12 @@
 ## 💻 Project
 
-This is my personal portfolio, made to present my knowledge and also to learn new things
+This is my personal portfolio, made to present my knowledge and also to learn new things 
 
 ## 📐 Layout
 
 https://www.figma.com/
 
-## :rocket: Technology
+## :rocket: Technologys
 
 This project was developed with the following technologies:
 
