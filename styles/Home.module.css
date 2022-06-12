@@ -4,7 +4,7 @@
   align-items: center;
   height: 100vh;
   flex: 1;
-  margin: 0 5vw;
+  margin: 0 8vw;
 }
 
 .mainContainer {
@@ -16,6 +16,7 @@
 
 .mainContainer>div {
   color: #ffffff;
+  font-family: 'Poppins', sans-serif;
 }
 
 .firstName {
@@ -24,7 +25,7 @@
 }
 
 .lastName {
-  margin-top: -30px;
+  margin-top: -80px;
   font-size: 6.5em;
   color: #6875DA;
 }
