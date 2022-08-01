@@ -4,12 +4,13 @@
   box-sizing: border-box;
 }
 :root {
-  --white: #fff;  
+  --white: #fff;
   --gray-500: #878787;
   --gray-800: #717171;
-  --green-500: #AEFF46;  
-  --blue-400: #6875DA;
-  --blue-500: #2C3D9D;
+  --green-500: #aeff46;
+  --blue-300: #6875da;
+  --blue-400: #2c3d9d;
+  --blue-500: #2c3d9d;
   --blue-800: #192576;
 }
 
@@ -29,26 +30,48 @@ body {
   background-color: var(--blue-800);
 }
 
-
-body, input, textarea, button {
-	font: 500 1rem  Poppins, sans-serif;
-	color: var(--gray-500)
+body,
+input,
+textarea,
+button {
+  font: 500 1rem Poppins, sans-serif;
+  color: var(--gray-500);
 }
 
-h1, h2, h3, h4, h5, h6 {
-	font-weight: 600;
-	font-family: Poppins, sans-serif;
-	color: var(--white);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Poppins, sans-serif;
+  color: var(--white);
 }
 
-h1 {
-	font-size: 2rem;
-}
-
-h2 {
-	font-size: 1.5rem;
+p {
+  font-size: 25px;
+  font-family: Poppins, sans-serif;
+  color: var(--white);
 }
 
 button {
-	cursor: pointer;
+  cursor: pointer;
+}
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #aeff46 #ffffff;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #aeff46;
+  border-radius: 10px;
 }
