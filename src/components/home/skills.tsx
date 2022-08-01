@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from '../../pages/index.module.scss'
 import Card from '../card/card'
+import Progress from '../progress/progress'
 import Title from '../title/title'
 
 type Props = {}
@@ -27,10 +28,17 @@ const Skills: React.FC<Props> = () => {
       </div>
 
       <aside>
+        <div>
+          <Progress title="Front end" value={80} />
+          <Progress title="Back end" value={30} />
+          <Progress title="Design" value={40} />
+          <Progress title="ReactJS" value={70} />
+        </div>
+
         <Card
           title="Frontend developer"
           subtitle="_fourcicle"
-          span='2019 - 2020'
+          span="2019 - 2020"
           content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis"
         />
       </aside>
