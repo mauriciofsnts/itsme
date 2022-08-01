@@ -7,7 +7,7 @@ type Props = {}
 
 const Home: React.FC<Props> = () => {
   return (
-    <main className={styles.homeMainContainer}>
+    <div className={styles.homeMainContainer}>
       <div>
         <h1>Mauricio</h1>
         <h3>Ferraz</h3>
@@ -21,7 +21,7 @@ const Home: React.FC<Props> = () => {
           height="600px"
         />
       </div>
-    </main>
+    </div>
   )
 }
 
