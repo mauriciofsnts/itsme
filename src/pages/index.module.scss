@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex: 1;
+
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  margin: 0 8vw;
+}
+
+.homeMainContainer {
+  flex: 1;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  h1 {
+    font-size: 8em;
+    line-height: -5px;
+  }
+
+  h3 {
+    margin-top: -80px;
+    font-size: 6.5em;
+    color: #6875da;
+  }
+}
