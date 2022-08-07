@@ -60,7 +60,7 @@ button {
 
 * {
   scrollbar-width: auto;
-  scrollbar-color: #aeff46 #ffffff;
+  scrollbar-color: var(--green-500) #ffffff;
 }
 
 *::-webkit-scrollbar {
@@ -72,6 +72,6 @@ button {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #aeff46;
+  background-color: var(--green-500);
   border-radius: 10px;
 }

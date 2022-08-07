@@ -42,6 +42,7 @@
   }
 
   aside {
+    margin-top: 50px;
     padding: 0 30px;
     display: flex;
     flex-direction: column;
@@ -52,5 +53,23 @@
     div {
       width: 100%;
     }
+  }
+}
+
+.projectsContainer {
+  min-height: 100vh;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  .filters {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+  }
+
+  small {
+    margin-top: 20px;
   }
 }

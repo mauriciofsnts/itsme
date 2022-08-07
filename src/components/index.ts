@@ -1,4 +1,5 @@
 export * from './home'
-export * from './title/title'
-export * from './card/card'
-export * from './progress/progress'
+export { default as Title } from './title/title'
+export { default as Card } from './card/card'
+export { default as Progress } from './progress/progress'
+export { default as Button } from './button/button'

@@ -1,0 +1,21 @@
+.btn {
+  border-radius: 6px;
+  border: 0;
+  padding: 15px 20px;
+}
+
+.default {
+  color: var(--white);
+  background-color: var(--blue-300);
+}
+
+.focus {
+  color: var(--blue-800);
+  background-color: var(--white);
+}
+
+.outlined {
+  background-color: transparent;
+  color: var(--green-500);
+  border: 1px solid var(--green-500);
+}
