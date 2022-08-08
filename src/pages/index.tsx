@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 import styles from './index.module.scss'
 
-import * as Part from '../components/home/'
+import { Home as HomeComponent, Projects, Skills} from '../components/home'
 
 const Home: NextPage = () => {
   return (
@@ -14,13 +14,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Part.Home />
+      <HomeComponent />
 
-      <Part.Skills />
+      <Skills />
 
-      <Part.Projects />
-
-      <Part.Contact />
+      <Projects />
+ 
     </div>
   )
 }

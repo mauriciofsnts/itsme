@@ -1,8 +1,8 @@
-import React from 'react'
-import styles from '../../pages/index.module.scss'
-import { Button, Title } from '../'
+import React from "react";
+import styles from "../../pages/index.module.scss";
+import { Button, Title, Showcase } from "../../components";
 
-type Props = {}
+type Props = {};
 
 const Projects: React.FC<Props> = () => {
   return (
@@ -26,8 +26,14 @@ const Projects: React.FC<Props> = () => {
         Showing all projects. Use the filter to list them by skill or
         technology.
       </small>
-    </div>
-  )
-}
 
-export default Projects
+      <div className={styles.showcase}>
+        <Showcase />
+        <Showcase invert />
+        <Showcase />
+      </div>
+    </div>
+  );
+};
+
+export default Projects;

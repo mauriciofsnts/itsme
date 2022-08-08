@@ -72,4 +72,11 @@
   small {
     margin-top: 20px;
   }
+
+  .showcase {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
 }
