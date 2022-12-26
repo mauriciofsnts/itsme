@@ -1,0 +1,120 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 8vw;
+
+  &__cover {
+    flex: 1;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    div > h1 {
+      font-size: 8em;
+      line-height: -5px;
+      color: var(--white);
+    }
+
+    div > h2 {
+      margin-top: -80px;
+      font-size: 6.5em;
+      color: var(--blue-300);
+    }
+  }
+
+  &__skills {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-bottom: 30px;
+
+    > div > h2 {
+      color: var(--white);
+      font-size: 4em;
+    }
+
+    > div > p {
+      margin-top: 30px;
+      font-size: 25px;
+    }
+  }
+
+  &__projects {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    > h2 {
+      color: var(--white);
+      font-size: 4em;
+    }
+
+    > p {
+      margin-top: 30px;
+      font-size: 25px;
+    }
+
+    &__filters {
+      margin-top: 30px;
+      flex-wrap: wrap;
+      display: flex;
+      flex-direction: row;
+      gap: 18px;
+    }
+
+    small {
+      margin-top: 20px;
+    }
+
+    &__showcase {
+      margin-top: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    &__cover {
+      margin: 0;
+
+      div > h1 {
+        font-size: 5.5em;
+      }
+
+      div > h2 {
+        font-size: 5em;
+        margin-top: -60px;
+      }
+
+      & > div:nth-child(2) {
+        display: none;
+      }
+    }
+
+    &__skills {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      > div > h2 {
+        color: var(--white);
+        font-size: 3em;
+        margin-bottom: 30px;
+      }
+
+      > div > p {
+        margin-top: 30px;
+        font-size: 20px;
+      }
+    }
+
+    &__filters {
+      justify-content: center;
+    }
+  }
+}

@@ -1,8 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 :root {
   --white: #fff;
   --gray-500: #878787;
@@ -14,53 +9,22 @@
   --blue-800: #192576;
 }
 
-@media (max-width: 1080px) {
-  html {
-    font-size: 93.75%;
-  }
-}
-
-@media (max-width: 720px) {
-  html {
-    font-size: 87.5%;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: auto;
+  scrollbar-color: var(--green-500) #ffffff;
+  color: var(--white);
 }
 
 body {
   background-color: var(--blue-800);
-}
-
-body,
-input,
-textarea,
-button {
-  font: 500 1rem Poppins, sans-serif;
-  color: var(--gray-500);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
   font-family: Poppins, sans-serif;
-  color: var(--white);
-}
-
-p {
-  font-size: 25px;
-  font-family: Poppins, sans-serif;
-  color: var(--white);
 }
 
 button {
   cursor: pointer;
-}
-
-* {
-  scrollbar-width: auto;
-  scrollbar-color: var(--green-500) #ffffff;
 }
 
 *::-webkit-scrollbar {

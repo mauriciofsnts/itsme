@@ -1,5 +1,0 @@
-export { default as Title } from './title/title'
-export { default as Card } from './card/card'
-export { default as Progress } from './progress/progress'
-export { default as Button } from './button/button'
-export { default as Showcase } from './showcase/showcase'
