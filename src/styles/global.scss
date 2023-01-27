@@ -2,7 +2,7 @@
   --white: #fff;
   --gray-500: #878787;
   --gray-800: #717171;
-  --green-500: #aeff46;
+  --secondary-500: #DBB007;
   --blue-300: #6875da;
   --blue-400: #2c3d9d;
   --blue-500: #2c3d9d;
@@ -14,7 +14,7 @@
   padding: 0;
   box-sizing: border-box;
   scrollbar-width: auto;
-  scrollbar-color: var(--green-500) #ffffff;
+  scrollbar-color: var(--secondary-500) #ffffff;
   color: var(--white);
 }
 
@@ -36,6 +36,6 @@ button {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--green-500);
+  background-color: var(--secondary-500);
   border-radius: 10px;
 }

@@ -11,7 +11,7 @@ type Props = {
 const Card: React.FC<Props> = ({ title, subtitle, span, content }) => {
   return (
     <div className={styles.container}>
-      <h5>{title}</h5>
+      <h1>{title}</h1>
 
       <span>{subtitle}</span>
       <br />
