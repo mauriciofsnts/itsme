@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { Button, Card, Progress, Showcase } from '../components'
+import Contact from '../components/contact'
 
 import styles from '../styles/home.module.scss'
 
@@ -10,47 +11,14 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>Mauricio Ferraz</title>
-        <meta name="description" content="Mauricio Ferraz - Software engineer" />
+        <meta
+          name="description"
+          content="Mauricio Ferraz - Software engineer"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className={styles.header}>
-        <div className={styles.header__social}>
-          <a
-            href="https://github.com/mauriciofsnts"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Image
-              src={'/imgs/github.svg'}
-              alt="github"
-              width={32}
-              height={32}
-            />
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/mauriciofsnts/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Image
-              src={'/imgs/linkedin.svg'}
-              alt="linkedin"
-              width={32}
-              height={32}
-            />
-          </a>
-
-          <a
-            href="mauriciofsnts@gmail.com"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Image src={'/imgs/mail.svg'} alt="mail" width={32} height={32} />
-          </a>
-        </div>
-      </header>
+      <Contact />
 
       <main className={styles.container}>
         <section className={styles.container__cover}>
