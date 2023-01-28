@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import { Button, Card, Progress, Showcase } from '../components'
 import Contact from '../components/contact'
 
@@ -10,11 +9,6 @@ const Home: NextPage = () => {
   return (
     <div className={styles.main}>
       <Head>
-        <title>Mauricio Ferraz</title>
-        <meta
-          name="description"
-          content="Mauricio Ferraz - Software engineer"
-        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
