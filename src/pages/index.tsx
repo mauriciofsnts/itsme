@@ -8,7 +8,7 @@ import styles from '../styles/home.module.scss'
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div className={styles.main}>
       <Head>
         <title>Mauricio Ferraz</title>
         <meta
@@ -20,23 +20,29 @@ const Home: NextPage = () => {
 
       <Contact />
 
+      <section className={styles.cover}>
+        <div className={styles.cover__presentation}>
+          <div>
+            <h1>Mauricio Ferraz</h1>
+            <h2>software engineer</h2>
+          </div>
+
+          <p>
+            Desenvolvedor Front-end com experiência em React.js, Next.js, Redux,
+            JavaScript, TypeScript, Styled Components, Material UI
+          </p>
+
+          <div>
+            <button>Entre em contato</button>
+          </div>
+        </div>
+
+        <div className={styles.cover__sideimg}>
+          <img src="/imgs/person.png" alt="Technology and Development" />
+        </div>
+      </section>
+
       <main className={styles.container}>
-        <section className={styles.container__cover}>
-          <div>
-            <h1>Mauricio</h1>
-            <h2>Ferraz</h2>
-          </div>
-
-          <div>
-            <Image
-              src="/imgs/home-img.png"
-              alt="Technology and Development"
-              width="700px"
-              height="600px"
-            />
-          </div>
-        </section>
-
         <section className={styles.container__skills}>
           <div>
             <h2>Skills &#38; Experience</h2>

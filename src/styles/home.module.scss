@@ -1,29 +1,77 @@
+.cover {
+  display: flex;
+  flex-direction: row;
+  height: 80vh;
+  background-color: var(--secondary-500);
+
+  margin: 32px 68px;
+  border-radius: 24px;
+
+  &__presentation {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    margin-left: 8vw;
+
+    > div > h1 {
+      color: var(--blue-800);
+      font-size: 82px;
+      white-space: nowrap;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    > div > h2 {
+      color: var(--blue-800);
+      font-size: 48px;
+      font-weight: 400;
+      white-space: nowrap;
+      margin-top: -35px;
+    }
+
+    > p {
+      color: var(--blue-800);
+      font-size: 20px;
+      font-weight: 300;
+    }
+
+    > div > button {
+      margin-top: 30px;
+      width: 250px;
+      border-radius: 55px;
+      padding: 15px 0px;
+      background-color: var(--secondary-300);
+      color: var(--blue-800);
+      font-size: 0.8em;
+      border: none;
+      cursor: pointer;
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+      text-transform: uppercase;
+    }
+  }
+
+  &__sideimg {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    width: 100%;
+
+    > img {
+      height: 80vh;
+      position: absolute;
+      right: 0;
+    }
+  }
+}
 
 .container {
   display: flex;
   flex-direction: column;
   margin: 0 8vw;
-
-  &__cover {
-    flex: 1;
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    div > h1 {
-      font-size: 8em;
-      line-height: -5px;
-      color: var(--white);
-    }
-
-    div > h2 {
-      margin-top: -80px;
-      font-size: 6.5em;
-      color: var(--blue-300);
-    }
-  }
+  margin-top: 80px;
 
   &__skills {
     display: flex;
@@ -80,24 +128,24 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .container {
-    &__cover {
-      margin: 0;
+  .cover {
+    margin: 0;
 
-      div > h1 {
-        font-size: 5.5em;
-      }
-
-      div > h2 {
-        font-size: 5em;
-        margin-top: -60px;
-      }
-
-      & > div:nth-child(2) {
-        display: none;
-      }
+    div > h1 {
+      font-size: 5.5em;
     }
 
+    div > h2 {
+      font-size: 5em;
+      margin-top: -60px;
+    }
+
+    & > div:nth-child(2) {
+      display: none;
+    }
+  }
+
+  .container {
     &__skills {
       display: flex;
       flex-direction: column;
