@@ -17,6 +17,9 @@
   scrollbar-width: auto;
   scrollbar-color: var(--secondary-500) #ffffff;
   color: var(--white);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {

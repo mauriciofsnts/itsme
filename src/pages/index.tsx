@@ -37,8 +37,10 @@ const Home: NextPage = () => {
           </div>
 
           <p>
-            Desenvolvedor Front-end com experiência em React.js, Next.js, Redux,
-            JavaScript, TypeScript, Styled Components, Material UI
+            Sou um engenheiro de software com experiência em desenvolvimento de
+            software em várias plataformas e linguagens. Tenho uma paixão por
+            solucionar problemas complexos e trabalhar em equipe para construir
+            soluções escaláveis e eficientes
           </p>
 
           <div>
@@ -47,7 +49,7 @@ const Home: NextPage = () => {
         </div>
 
         <div className={styles.cover__sideimg}>
-          <img src="/imgs/person.png" alt="Technology and Development" />
+          <img src="/imgs/person3.png" alt="Technology and Development" />
         </div>
       </section>
 
