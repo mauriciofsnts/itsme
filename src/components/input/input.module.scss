@@ -1,0 +1,14 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+
+  > input {
+    background-color: var(--blue-500);
+    border: 1px solid var(--blue-300);
+    outline: var(--blue-300);
+    border-radius: 6px;
+    padding: 10px;
+  }
+}
