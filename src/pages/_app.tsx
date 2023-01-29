@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import * as gtag from '../utils/gtag'
 
 import Head from 'next/head'
+import Analytics from '../components/analytics'
 import Contact from '../components/contact'
 import '../styles/global.scss'
 
@@ -44,6 +45,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Contact />
 
       <Component {...pageProps} />
+
+      <Analytics />
     </>
   )
 }
