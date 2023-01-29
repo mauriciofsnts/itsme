@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { NextPage } from 'next'
-import { Input, Select } from '../components'
+import { ColorInput, Input, Select } from '../components'
 import { cssPropertieConfig, properties } from '../utils/css_modules'
 import styles from '../styles/css.module.scss'
 
@@ -38,20 +38,31 @@ const CssPropertyConfigForm = ({
     <div className={styles.main__config__content}>
       {configInputs.options.map((option) => (
         <>
-          {option.type === 'text' ? (
+          {option.type === 'text' && (
             <Input
               onChange={handleChangeProperty}
               label={option.label}
               name={option.value}
               value={params[option.value]}
             />
-          ) : (
+          )}
+
+          {option.type === 'select' && (
             <Select
               onChange={handleChangeProperty}
               label={option.label}
               options={option.options ?? []}
               name={option.value}
               value={params[option.value]}
+            />
+          )}
+
+          {option.type === 'color' && (
+            <ColorInput
+              label={option.label}
+              name={option.value}
+              value={params[option.value]}
+              onChange={handleChangeProperty}
             />
           )}
         </>

@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './color-input.module.scss'
 
 // Native html input color props
 interface Props
@@ -9,12 +10,21 @@ interface Props
   label: string
 }
 
-const ColorInput: React.FC<Props> = ({ label }) => {
+const ColorInput: React.FC<Props> = ({
+  label,
+  value,
+  onChange,
+  ...inputProps
+}) => {
   // Native HTML input color element
   return (
-    <div>
+    <div className={styles.inputContainer}>
       <label htmlFor="input">{label}</label>
-      <input type="color" />
+
+      <div>
+        <input type="color" value={value} onChange={onChange} {...inputProps} />
+        <input type="text" value={value} onChange={onChange} {...inputProps} />
+      </div>
     </div>
   )
 }

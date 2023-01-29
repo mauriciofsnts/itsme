@@ -1,4 +1,4 @@
-import BackgroundImage from "../components/css/backgroundImage"
+import BackgroundImage from '../components/css/backgroundImage'
 
 const properties = [
   {
@@ -91,6 +91,12 @@ const cssPropertieConfig = [
           { label: 'Repeat X', value: 'repeat-x' },
           { label: 'Repeat Y', value: 'repeat-y' },
         ],
+      },
+
+      {
+        label: 'Color',
+        value: 'backgroundColor',
+        type: 'color',
       },
     ],
   },
