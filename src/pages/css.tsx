@@ -66,10 +66,9 @@ const Css: NextPage = () => {
   )[0]
 
   const [params, setParams] = useState<any>({
-    backgroundImage: 'https://cdn.pixabay.com/photo/2012/09/06/21/33/landscape-56314_960_720.png',
+    backgroundImage:
+      'https://cdn.pixabay.com/photo/2012/09/06/21/33/landscape-56314_960_720.png',
   })
-
-  console.log('params: ' ,params)
 
   const handleChangeConfig = (e: React.ChangeEvent) => {
     const target = e.target as HTMLInputElement
