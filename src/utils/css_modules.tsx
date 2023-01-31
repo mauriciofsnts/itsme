@@ -1,4 +1,4 @@
-import BackgroundImage from '../components/css/backgroundImage'
+import Box from '../components/css/box'
 
 const properties = [
   {
@@ -43,14 +43,80 @@ const properties = [
   },
 ]
 
-const cssPropertieConfig = [
-  // {
-  //   name: 'Background Color',
-  //   options: [{ label: 'Color', value: 'color', type: 'text' }],
-  // },
+type ICssPropertieConfig = {
+  name: string
+  render: React.FC<any>
+  initialValues: any
+  options: {
+    label: string
+    value: string
+    type: string
+    options?: {
+      label: string
+      value: string
+    }[]
+  }[]
+}
+
+const cssPropertieConfig: ICssPropertieConfig[] = [
+  {
+    name: 'Border',
+    render: Box,
+    initialValues: {
+      border: '1px solid #6875da',
+    },
+    options: [
+      {
+        label: 'Border',
+        value: 'border',
+        type: 'text',
+      },
+    ],
+  },
+
+  {
+    name: 'Border Radius',
+    render: Box,
+    initialValues: {
+      borderRadius: '0px',
+    },
+    options: [
+      {
+        label: 'Border Radius',
+        value: 'borderRadius',
+        type: 'text',
+      },
+    ],
+  },
+
+  
+
+  {
+    name: 'Background Color',
+    render: Box,
+    initialValues: {
+      backgroundColor: '#6875da',
+    },
+    options: [
+      {
+        label: 'Color',
+        value: 'backgroundColor',
+        type: 'color',
+      },
+    ],
+  },
+
   {
     name: 'Background Image',
-    render: BackgroundImage,
+    render: Box,
+    initialValues: {
+      backgroundImage:
+        'https://cdn.pixabay.com/photo/2012/09/06/21/33/landscape-56314_960_720.png',
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundColor: '#6875da',
+    },
     options: [
       { label: 'Image URL', value: 'backgroundImage', type: 'text' },
       {
@@ -103,3 +169,4 @@ const cssPropertieConfig = [
 ]
 
 export { properties, cssPropertieConfig }
+export type { ICssPropertieConfig }
