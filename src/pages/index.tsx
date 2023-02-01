@@ -14,10 +14,10 @@ const Home: NextPage = () => {
           </div>
 
           <p>
-            Sou um engenheiro de software com experiência em desenvolvimento de
-            software em várias plataformas e linguagens. Tenho uma paixão por
-            solucionar problemas complexos e trabalhar em equipe para construir
-            soluções escaláveis e eficientes
+            I&apos;m a software engineer with experience in software development on
+            various platforms and languages. I have a passion for solving
+            complex problems and working in a team to build scalable and
+            efficient solutions.
           </p>
 
           <div>
