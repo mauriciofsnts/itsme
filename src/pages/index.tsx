@@ -21,7 +21,7 @@ const Home: NextPage = () => {
           </p>
 
           <div>
-            <button>Entre em contato</button>
+            <button>Contact</button>
           </div>
         </div>
 
