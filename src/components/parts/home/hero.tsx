@@ -1,10 +1,21 @@
+"use client";
 import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
-import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { TypeAnimation } from "react-type-animation";
 
 const headingFont = localFont({
   src: "../../../../public/font/SequelSansMediumDisp.woff2",
 });
+
+const roles = [
+  "Front-end Developer",
+  "React Developer",
+  "TypeScript Developer",
+  "JavaScript Developer",
+  "Back-end Developer",
+  "Node.js Developer",
+  "Full-stack Developer",
+];
 
 const Hero = () => {
   return (
@@ -18,7 +29,15 @@ const Hero = () => {
         Mauricio Ferraz
       </h1>
 
-      <TextGenerateEffect words="Front-end Developer" />
+      <TypeAnimation
+        sequence={roles.map((role, index) => {
+          return index % 2 === 0 ? role : 3000;
+        })}
+        wrapper="span"
+        speed={20}
+        style={{ fontSize: "36px", display: "inline-block" }}
+        repeat={Infinity}
+      />
     </div>
   );
 };
