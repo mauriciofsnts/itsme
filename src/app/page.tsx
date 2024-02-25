@@ -17,6 +17,7 @@ export default function Home() {
       <hr className="bg-gray-300" />
       <Projects />
       <Bio />
+      <hr className="bg-gray-300" />
       <Passion />
     </main>
   );

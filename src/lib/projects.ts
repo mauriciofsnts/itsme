@@ -17,6 +17,6 @@ export const projects = [
   {
     title: "Squarefox",
     description:
-      "This is my personal website. I developed it using Next.js and TailwindCSS. It has a lot of features that help me to manage my tasks and also to have fun with my friends.",
+      "This is my web design company aiming to change the concept of web design worldwide. We are a team of professionals passionate about creating, designing, and developing websites.",
   },
 ];
