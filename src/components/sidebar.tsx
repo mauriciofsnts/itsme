@@ -34,14 +34,17 @@ const Sidebar = () => {
 
           <div className="flex flex-col">
             <Link
-              className="text-md text-[#3b3d41]"
+              className="text-md text-[#3b3d41] hover:text-[#ccccd1]"
               rel="noopener noreferrer"
               target="_blank"
               href="https://github.com/mauriciofsnts/hermes"
             >
               Hermes
             </Link>
-            <Link className="text-md text-[#3b3d41]" href="#">
+            <Link
+              className="text-md text-[#3b3d41] hover:text-[#ccccd1]"
+              href="#"
+            >
               Omnia
             </Link>
           </div>
@@ -51,18 +54,24 @@ const Sidebar = () => {
           <SectionTitle>Web interfaces</SectionTitle>
 
           <div className="flex flex-col">
-            <Link className="text-md text-[#3b3d41]" href="#">
+            <Link
+              className="text-md text-[#3b3d41] hover:text-[#ccccd1]"
+              href="#"
+            >
               Speedify
             </Link>
             <Link
-              className="text-md text-[#3b3d41]"
+              className="text-md text-[#3b3d41] hover:text-[#ccccd1]"
               rel="noopener noreferrer"
               target="_blank"
               href="http://squarefox.digital/"
             >
               Squarefox
             </Link>
-            <Link className="text-md text-[#3b3d41]" href="#">
+            <Link
+              className="text-md text-[#3b3d41] hover:text-[#ccccd1]"
+              href="#"
+            >
               Itsme
             </Link>
           </div>
@@ -77,6 +86,7 @@ const Sidebar = () => {
             rel="noopener noreferrer"
             target="_blank"
             href="mailto:mauriciofsnts@gmail.com"
+            className="text-md text-[#3b3d41] hover:text-[#ccccd1]"
           >
             Mail
           </Link>
@@ -84,6 +94,7 @@ const Sidebar = () => {
             rel="noopener noreferrer"
             target="_blank"
             href="https://www.linkedin.com/in/mauriciofsnts"
+            className="text-md text-[#3b3d41] hover:text-[#ccccd1]"
           >
             LinkedIn
           </Link>
@@ -91,6 +102,7 @@ const Sidebar = () => {
             rel="noopener noreferrer"
             target="_blank"
             href="https://github.com/mauriciofsnts"
+            className="text-md text-[#3b3d41] hover:text-[#88888d]"
           >
             GitHub
           </Link>
