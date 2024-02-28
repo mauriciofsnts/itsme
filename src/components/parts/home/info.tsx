@@ -1,9 +1,30 @@
 import SectionTitle from "@/components/sectionTitle";
+import Image from "next/image";
 
 const Info = () => {
   return (
-    <div className="flex flex-row gap-5">
-      <div className="flex-1">he</div>
+    <div className="flex flex-col-reverse md:flex-row  gap-5 mt-10 min-h-[500px]">
+      <div className="mt-10 flex flex-1 flex-row gap-5 justify-start h-full">
+        <div className="self-start">
+          <Image
+            alt="Just an placeholder"
+            src="https://placehold.co/237x260"
+            width="237"
+            height="260"
+            className="rounded-lg"
+          />
+        </div>
+
+        <div className="self-end h-max">
+          <Image
+            alt="Just an placeholder"
+            src="https://placehold.co/266x386"
+            width="266"
+            height="386"
+            className="rounded-lg"
+          />
+        </div>
+      </div>
 
       <div className="flex-1">
         <SectionTitle>INFO</SectionTitle>

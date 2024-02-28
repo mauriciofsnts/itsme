@@ -9,7 +9,7 @@ const headingFont = localFont({
 
 const Passion = () => {
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-col md:flex-row">
       <div className="flex flex-1 items-start justify-center flex-col">
         <SectionTitle className="mb-5">THINGS I LOVE TO DO</SectionTitle>
 
@@ -27,7 +27,8 @@ const Passion = () => {
           )
         )}
       </div>
-      <div className="flex flex-1 items-end gap-3">
+
+      <div className="hidden md:flex flex-1 items-end gap-3">
         <Image
           alt="Coding"
           src="https://placehold.co/240x380"

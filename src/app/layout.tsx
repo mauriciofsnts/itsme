@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/sidebar";
+
 import { ThemeProvider } from "@/components/themeProvider";
+import Sidebar from "@/components/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Mauricio Ferraz - Web Developer",
-  description: "This is my personal website. I'm a web developer.",
+  title: "Mauricio Ferraz - Full Stack Developer",
+  description:
+    "Welcome to my personal website, where you can explore my creative world through my portfolio, blog, and projects. Dive into my journey of design, development, and reflections as you browse through my creations. Join me on this journey of innovation and inspiration. Welcome aboard!",
 };
 
 export default function RootLayout({
