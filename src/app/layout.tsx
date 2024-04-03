@@ -24,6 +24,7 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
+          storageKey="mrtz-theme"
           disableTransitionOnChange
         >
           <div className="flex flex-col md:flex-row overflow-hidden max-h-screen">

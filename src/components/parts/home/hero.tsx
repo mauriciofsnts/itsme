@@ -39,11 +39,11 @@ const Hero = () => {
   const todayRole = getDailyRandomRole();
 
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="flex flex-col md:flex-row items-center">
       <div className="flex-1">
         <h1
           className={cn(
-            "text-[73px] md:text-9xl leading-none font-extrabold text-transparent bg-clip-text bg-gradient-heading",
+            "text-8xl md:text-9xl leading-none font-extrabold text-transparent bg-clip-text bg-gradient-heading",
             headingFont.className
           )}
         >
@@ -55,7 +55,7 @@ const Hero = () => {
         </p>
       </div>
 
-      <div className="flex-1 hidden md:flex flex-row flex-nowrap justify-end gap-5 bg-gradient-radial mt-20 md:mt-0 ">
+      <div className="hidden flex-1 xl:flex flex-row flex-nowrap justify-end gap-5 bg-gradient-radial mt-20 md:mt-0 ">
         <Image
           alt="Placeholder"
           src="https://placehold.co/200x271"
