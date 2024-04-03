@@ -43,19 +43,19 @@ const Hero = () => {
       <div className="flex-1">
         <h1
           className={cn(
-            "text-8xl md:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-heading",
+            "text-[73px] md:text-9xl leading-none font-extrabold text-transparent bg-clip-text bg-gradient-heading",
             headingFont.className
           )}
         >
           Mauricio Ferraz
         </h1>
 
-        <p className="text-xl md:text-2xl font-medium text-gray-500">
+        <p className="text-xl md:text-2xl font-medium text-gray-500 mt-2">
           I&apos;m a {todayRole} based in Brazil
         </p>
       </div>
 
-      <div className="flex-1 flex flex-row flex-nowrap justify-end gap-5 bg-gradient-radial mt-20 md:mt-0">
+      <div className="flex-1 hidden md:flex flex-row flex-nowrap justify-end gap-5 bg-gradient-radial mt-20 md:mt-0 ">
         <Image
           alt="Placeholder"
           src="https://placehold.co/200x271"

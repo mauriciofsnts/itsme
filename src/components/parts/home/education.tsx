@@ -12,7 +12,7 @@ const Education = () => {
     <div>
       <SectionTitle>Education</SectionTitle>
 
-      <div className="flex flex-row gap-5 mt-5">
+      <div className="flex flex-col md:flex-row  gap-5 mt-5">
         <div className="flex justify-center flex-col flex-1 w-full">
           <h3
             className={cn(

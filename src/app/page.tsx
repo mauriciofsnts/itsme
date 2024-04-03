@@ -10,7 +10,7 @@ import Template from "@/components/parts/home/template";
 export default function Home() {
   return (
     <Template>
-      <div className="max-w-screen md:max-w-6xl p-10 mx-auto flex flex-col gap-10">
+      <div className="max-w-screen md:max-w-6xl p-5 md:p-10 mx-auto flex flex-col gap-10">
         <Phrase />
         <Hero />
         <Info />

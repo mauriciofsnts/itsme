@@ -26,9 +26,9 @@ const Bio = () => {
             className="flex justify-start items-center flex-row gap-3"
             key={index}
           >
-            <p className="font-bold text-sm">{item.date}</p>
+            <p className="font-bold text-sm text-gray-500">{item.date}</p>
 
-            <p className="text-sm">{item.description}</p>
+            <p className="text-sm text-[#3b3d41]">{item.description}</p>
           </div>
         ))}
       </div>
