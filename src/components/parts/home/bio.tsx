@@ -1,21 +1,18 @@
-import SectionTitle from "@/components/sectionTitle";
 import React from "react";
-
-const items = [
-  { date: "2019", description: "Started my career as a developer" },
-  { date: "2020", description: "Front-end developer at _fourcicle" },
-  { date: "2021", description: "Graduated in Computer Science" },
-  {
-    date: "2022",
-    description: "Became a full-stack developer at SouthRock Lab.",
-  },
-  {
-    date: "2024",
-    description: "Completed my postgraduate in Digital Solutions Architecture",
-  },
-];
+import { useTranslations } from "next-intl";
+import SectionTitle from "@/components/sectionTitle";
 
 const Bio = () => {
+  const t = useTranslations("Home");
+
+  const items = [
+    { date: "2019", description: t("BioItens.StartedCareer") },
+    { date: "2020", description: t("BioItens.FrontEndDeveloper") },
+    { date: "2021", description: t("BioItens.Graduated") },
+    { date: "2022", description: t("BioItens.FullstackDeveloper") },
+    { date: "2024", description: t("BioItens.Postgraduate") },
+  ];
+
   return (
     <div>
       <SectionTitle>Bio</SectionTitle>

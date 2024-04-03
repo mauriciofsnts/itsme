@@ -1,16 +1,20 @@
-import SectionTitle from "@/components/sectionTitle";
-import localFont from "next/font/local";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
+import localFont from "next/font/local";
+import { useTranslations } from "next-intl";
+
+import SectionTitle from "@/components/sectionTitle";
+import { cn } from "@/lib/utils";
 
 const headingFont = localFont({
   src: "../../../../public/font/SequelSansMediumDisp.woff2",
 });
 
 const Education = () => {
+  const t = useTranslations("Home");
+
   return (
     <div>
-      <SectionTitle>Education</SectionTitle>
+      <SectionTitle>{t("education")}</SectionTitle>
 
       <div className="flex flex-col md:flex-row  gap-5 mt-5">
         <div className="flex justify-center flex-col flex-1 w-full">
@@ -20,7 +24,7 @@ const Education = () => {
               headingFont.className
             )}
           >
-            Impacta University of Technology
+            {t("Impacta University of Technology")}
           </h3>
 
           <h3
@@ -29,7 +33,7 @@ const Education = () => {
               headingFont.className
             )}
           >
-            Postgraduate in Digital Solutions Architecture
+            {t("Postgraduate in Digital Solutions Architecture")}
           </h3>
 
           <p className="text-xs mt-2 text-[#A0A5AC]">2023 - 2024</p>

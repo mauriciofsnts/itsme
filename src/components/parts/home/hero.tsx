@@ -1,21 +1,11 @@
-"use client";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 import localFont from "next/font/local";
 import Image from "next/image";
 
 const headingFont = localFont({
   src: "../../../../public/font/SequelSansMediumDisp.woff2",
 });
-
-const roles = [
-  "Front-end Developer",
-  "React Developer",
-  "TypeScript Developer",
-  "JavaScript Developer",
-  "Back-end Developer",
-  "Node.js Developer",
-  "Full-stack Developer",
-];
 
 function hashString(s: string) {
   let hash = 0;
@@ -28,14 +18,17 @@ function hashString(s: string) {
   return hash;
 }
 
-function getDailyRandomRole() {
-  const today = new Date().toISOString().slice(0, 10);
-  const hash = hashString(today);
-  const index = Math.abs(hash) % roles.length;
-  return roles[index];
-}
-
 const Hero = () => {
+  const t = useTranslations("Home");
+  const roles = Object.keys(t.raw("Roles"));
+
+  function getDailyRandomRole() {
+    const today = new Date().toISOString().slice(0, 10);
+    const hash = hashString(today);
+    const index = Math.abs(hash) % roles.length;
+    return t(`Roles.${roles[index]}`);
+  }
+
   const todayRole = getDailyRandomRole();
 
   return (
@@ -51,7 +44,7 @@ const Hero = () => {
         </h1>
 
         <p className="text-xl md:text-2xl font-medium text-gray-500 mt-2">
-          I&apos;m a {todayRole} based in Brazil
+          {t("Role", { todayRole })}
         </p>
       </div>
 

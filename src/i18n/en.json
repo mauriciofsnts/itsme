@@ -1,0 +1,58 @@
+{
+  "Sidebar": {
+    "Projects": "Projects",
+    "Ideas": "Ideas",
+    "CV": "CV",
+    "About": "About",
+    "Hermes": "Hermes",
+    "Omnia": "Omnia",
+    "Itsme": "Itsme",
+    "Web Interfaces": "Web Interfaces",
+    "Linkedin": "Linkedin",
+    "Github": "Github",
+    "Mail": "Mail",
+    "Contact": "Contact",
+    "Speedify": "Speedify",
+    "Squarefox": "Squarefox"
+  },
+  "Home": {
+    "education": "Education",
+    "Impacta University of Technology": "Impacta University of Technology",
+    "Postgraduate in Digital Solutions Architecture": "Postgraduate in Digital Solutions Architecture",
+    "info": "Info",
+    "InfoParagraph1": "I am a postgraduate from Impacta University in Digital Solutions Architecture, having completed my course in February 2024.",
+    "InfoParagraph2": "Since childhood, I&apos;ve been passionate about technology, always fascinated by the idea of creating impactful solutions for users. This passion has driven me to explore various areas within the technology field, constantly seeking ways to innovate and enhance user experience through creative and efficient solutions.",
+    "InfoParagraph3": "Throughout my career, I have immersed myself in the development of high-complexity platforms, collaborating with a variety of clients across different segments. My work includes significant contributions     to renowned projects such as Senac, SOSDocs, Subway, TGI, and Starbucks. These enriching experiences have provided me with a broad understanding of the needs and requirements of different industries, while also enhancing my technical skills in various contexts.",
+    "ThingsILoveToDo": "Things I Love to Do",
+    "Projects": "Projects",
+    "PassionItems": {
+      "Solve Problems": "Solve Problems",
+      "Create Solutions": "Create Solutions",
+      "Coffee": "Coffee"
+    },
+    "MyProjects": {
+      "Vulcano": "Vulcano is a Discord bot I developed to help me with my daily tasks. It has many features that help me manage my server and also have fun with my friends.",
+      "Hermes": "Hermes is a service that simplifies the integration of email functionality into your applications, eliminating the headache of dealing with the intricate complexities of SMTP.",
+      "Todos": "Todos is a simple task app I developed to help me manage my daily tasks. It has many features that help me manage my tasks and also have fun with my friends.",
+      "Squarefox": "Squarefox aims to change the concept of web design worldwide. We are a team of professionals passionate about creating, designing, and developing websites."
+    },
+    "Roles": {
+      "FrontEndDeveloper": "Front-end Developer",
+      "ReactDeveloper": "React Developer",
+      "TypeScriptDeveloper": "TypeScript Developer",
+      "JavaScriptDeveloper": "JavaScript Developer",
+      "BackendDeveloper": "Back-end Developer",
+      "NodejsDeveloper": "NodeJs Developer",
+      "FullstackDeveloper": "Full-stack Developer"
+    },
+    "Role": "I&apos;m a {todayRole} based in Brazil",
+    "Bio": "Bio",
+    "BioItens": {
+      "StartedCareer": "Started my career as a developer",
+      "FrontEndDeveloper": "Front-end developer at _fourcicle",
+      "Graduated": "Graduated in Computer Science",
+      "FullstackDeveloper": "Became a full-stack developer at SouthRock Lab.",
+      "Postgraduate": "Completed my postgraduate in Digital Solutions Architecture"
+    }
+  }
+}

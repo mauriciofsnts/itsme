@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/themeProvider";
+import { NextIntlClientProvider, useMessages } from "next-intl";
 import Sidebar from "@/components/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -15,24 +16,28 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  locale,
 }: Readonly<{
   children: React.ReactNode;
+  locale: string;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          storageKey="mrtz-theme"
-          disableTransitionOnChange
-        >
-          <div className="flex flex-col md:flex-row overflow-hidden max-h-screen">
-            <Sidebar />
+        <NextIntlClientProvider locale={locale}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            storageKey="mrtz-theme"
+            disableTransitionOnChange
+          >
+            <div className="flex flex-col md:flex-row overflow-hidden max-h-screen">
+              <Sidebar />
 
-            <div className="flex-grow overflow-auto">{children}</div>
-          </div>
-        </ThemeProvider>
+              <div className="flex-grow overflow-auto">{children}</div>
+            </div>
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
