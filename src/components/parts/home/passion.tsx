@@ -14,7 +14,7 @@ const Passion = () => {
   const passionItems = Object.keys(t.raw("PassionItems"));
 
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="flex flex-row">
       <div className="flex flex-1 items-start justify-center flex-col">
         <SectionTitle className="mb-5">{t("ThingsILoveToDo")}</SectionTitle>
 
@@ -31,20 +31,14 @@ const Passion = () => {
         ))}
       </div>
 
-      <div className="hidden md:flex flex-1 items-end gap-3">
+      <div className="flex flex-1 items-end justify-center gap-3">
         <Image
           alt="Coding"
-          src="https://placehold.co/240x380"
+          src="/astronaut.svg"
           width="240"
           height="380"
           className="rounded-lg"
-        />
-        <Image
-          alt="Coding"
-          src="https://placehold.co/266x282"
-          width="266"
-          height="282"
-          className="rounded-lg"
+          draggable={false}
         />
       </div>
     </div>

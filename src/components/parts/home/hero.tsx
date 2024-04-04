@@ -51,18 +51,11 @@ const Hero = () => {
       <div className="hidden flex-1 xl:flex flex-row flex-nowrap justify-end gap-5 bg-gradient-radial mt-20 md:mt-0 ">
         <Image
           alt="Placeholder"
-          src="https://placehold.co/200x271"
-          width="200"
-          height="271"
+          src="/hero-image.svg"
+          width="400"
+          height="225"
           className="rounded-lg"
-        />
-
-        <Image
-          alt="Placeholder"
-          src="https://placehold.co/270x350"
-          width="270"
-          height="350"
-          className="rounded-lg"
+          draggable={false}
         />
       </div>
     </div>

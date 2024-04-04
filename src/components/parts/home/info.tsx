@@ -6,8 +6,9 @@ const Info = () => {
   const t = useTranslations("Home");
 
   return (
-    <div className="flex flex-col-reverse md:flex-row  gap-5 mt-10 min-h-[500px]">
-      <div className="mt-10 flex flex-1 flex-row gap-5 justify-start h-full">
+    <div className="flex flex-col-reverse md:flex-row  gap-5 mt-10">
+      {/* TODO: find pictures :) */}
+      <div className="mt-10 flex flex-1 flex-row gap-5 justify-start h-full hidden">
         <div className="self-start">
           <Image
             alt="Just an placeholder"
