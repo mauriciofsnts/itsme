@@ -1,16 +1,23 @@
+import { type Locale, locales } from "@/lib/locales";
 import createMiddleware from "next-intl/middleware";
+import { type NextRequest, type NextResponse } from "next/server";
 
-const middleware = createMiddleware({
-  // Add locales you want in the app
-  locales: ["en", "pt"],
-
-  // Default locale if no match
-  defaultLocale: "pt",
+const nextIntlMiddleware = createMiddleware({
+  locales,
+  defaultLocale: "en" satisfies Locale,
+  localePrefix: "never",
 });
 
-export default middleware;
+export function middleware(req: NextRequest): NextResponse {
+  return nextIntlMiddleware(req);
+}
 
 export const config = {
-  // Match only internationalized pathnames
-  matcher: ["/", "/(pt|en)/:page*"],
+  // match only internationalized pathnames
+  matcher: [
+    // Match all pathnames except for
+    // - … if they start with `/api`, `/_next` or `/_vercel`
+    // - … the ones containing a dot (e.g. `favicon.ico`)
+    "/((?!api|_next|_vercel|.*\\..*).*)",
+  ],
 };

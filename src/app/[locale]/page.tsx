@@ -1,3 +1,4 @@
+import { unstable_setRequestLocale } from "next-intl/server";
 import Phrase from "@/components/parts/home/phrase";
 import Projects from "@/components/parts/home/projects";
 import Education from "@/components/parts/home/education";
@@ -7,7 +8,9 @@ import Info from "@/components/parts/home/info";
 import Hero from "@/components/parts/home/hero";
 import Template from "@/components/parts/home/template";
 
-export default function Home() {
+export default function Home({ params: { locale } }: any) {
+  unstable_setRequestLocale(locale);
+
   return (
     <Template>
       <div className="max-w-screen md:max-w-6xl p-5 md:p-10 mx-auto flex flex-col gap-10">

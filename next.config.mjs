@@ -1,9 +1,9 @@
-import createNextIntlPlugin from "next-intl/plugin";
+import withNextIntl from "next-intl/plugin";
 
-const withNextIntl = createNextIntlPlugin();
+const nextIntlConfig = withNextIntl();
 
 /** @type {import('next').NextConfig} */
-const nextConfig = withNextIntl({
+const nextConfig = {
   output: "standalone",
   images: {
     dangerouslyAllowSVG: true,
@@ -14,6 +14,6 @@ const nextConfig = withNextIntl({
       },
     ],
   },
-});
+};
 
-export default nextConfig;
+export default nextIntlConfig(nextConfig);

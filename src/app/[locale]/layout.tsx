@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 
 import { ThemeProvider } from "@/components/themeProvider";
 import { NextIntlClientProvider, useMessages } from "next-intl";
@@ -16,15 +16,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  locale,
+  params,
 }: Readonly<{
   children: React.ReactNode;
-  locale: string;
+  params: { locale: string };
 }>) {
+  const { locale } = params;
+  const messages = useMessages();
+
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
-        <NextIntlClientProvider locale={locale}>
+        <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
             defaultTheme="light"
