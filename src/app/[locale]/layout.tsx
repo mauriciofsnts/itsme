@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "../globals.css";
-
-import { ThemeProvider } from "@/components/themeProvider";
 import { NextIntlClientProvider, useMessages } from "next-intl";
+import { GoogleAnalytics } from "@next/third-parties/google";
+
+import "../globals.css";
+import { ThemeProvider } from "@/components/themeProvider";
 import Sidebar from "@/components/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -42,6 +43,8 @@ export default function RootLayout({
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
+
+      <GoogleAnalytics gaId={process.env.GTAG!} />
     </html>
   );
 }
