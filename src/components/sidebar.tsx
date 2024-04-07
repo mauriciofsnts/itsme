@@ -3,7 +3,7 @@ import Logo from "./logo";
 import Link from "next/link";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
-import SectionTitle from "./sectionTitle";
+import SectionTitle from "./section-title";
 import { useTranslations } from "next-intl";
 
 const headingFont = localFont({

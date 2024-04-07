@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslations } from "next-intl";
-import SectionTitle from "@/components/sectionTitle";
+import SectionTitle from "@/components/section-title";
 
 const Bio = () => {
   const t = useTranslations("Home");

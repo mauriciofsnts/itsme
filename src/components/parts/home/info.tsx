@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import SectionTitle from "@/components/sectionTitle";
+import SectionTitle from "@/components/section-title";
 
 const Info = () => {
   const t = useTranslations("Home");

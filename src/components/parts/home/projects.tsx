@@ -1,4 +1,4 @@
-import SectionTitle from "@/components/sectionTitle";
+import SectionTitle from "@/components/section-title";
 import { useTranslations } from "next-intl";
 
 const Projects = () => {

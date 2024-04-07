@@ -4,7 +4,7 @@ import { NextIntlClientProvider, useMessages } from "next-intl";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 import "../globals.css";
-import { ThemeProvider } from "@/components/themeProvider";
+import { ThemeProvider } from "@/components/theme-provider";
 import Sidebar from "@/components/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });

@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import localFont from "next/font/local";
 import Image from "next/image";
-import SectionTitle from "@/components/sectionTitle";
+import SectionTitle from "@/components/section-title";
 import { cn } from "@/lib/utils";
 
 const headingFont = localFont({
