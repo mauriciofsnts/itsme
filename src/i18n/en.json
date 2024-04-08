@@ -21,7 +21,7 @@
     "Postgraduate in Digital Solutions Architecture": "Postgraduate in Digital Solutions Architecture",
     "info": "Info",
     "InfoParagraph1": "I am a postgraduate from Impacta University in Digital Solutions Architecture, having completed my course in February 2024.",
-    "InfoParagraph2": "Since childhood, I&apos;ve been passionate about technology, always fascinated by the idea of creating impactful solutions for users. This passion has driven me to explore various areas within the technology field, constantly seeking ways to innovate and enhance user experience through creative and efficient solutions.",
+    "InfoParagraph2": "Since childhood, I've been passionate about technology, always fascinated by the idea of creating impactful solutions for users. This passion has driven me to explore various areas within the technology field, constantly seeking ways to innovate and enhance user experience through creative and efficient solutions.",
     "InfoParagraph3": "Throughout my career, I have immersed myself in the development of high-complexity platforms, collaborating with a variety of clients across different segments. My work includes significant contributions     to renowned projects such as Senac, SOSDocs, Subway, TGI, and Starbucks. These enriching experiences have provided me with a broad understanding of the needs and requirements of different industries, while also enhancing my technical skills in various contexts.",
     "ThingsILoveToDo": "Things I Love to Do",
     "Projects": "Projects",
@@ -45,7 +45,7 @@
       "NodejsDeveloper": "NodeJs Developer",
       "FullstackDeveloper": "Full-stack Developer"
     },
-    "Role": "I&apos;m a {todayRole} based in Brazil",
+    "Role": "I'm a {todayRole} based in Brazil",
     "Bio": "Bio",
     "BioItens": {
       "StartedCareer": "Started my career as a developer",

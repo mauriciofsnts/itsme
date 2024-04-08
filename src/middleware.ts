@@ -1,10 +1,12 @@
-import { type Locale, locales } from "@/lib/locales";
+import { locales, defaultLocale } from "@/lib/locales";
 import createMiddleware from "next-intl/middleware";
 import { type NextRequest, type NextResponse } from "next/server";
 
+const localesCodes = locales.map((locale) => locale.code);
+
 const nextIntlMiddleware = createMiddleware({
-  locales,
-  defaultLocale: "en" satisfies Locale,
+  locales: localesCodes,
+  defaultLocale,
   localePrefix: "never",
 });
 
