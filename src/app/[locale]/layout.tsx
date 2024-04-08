@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { siteMetadata } from "@/lib/siteMetadata";
+import { siteMetadata } from "@/config/metadata";
 
 import "../globals.css";
 import { ThemeProvider } from "@/components/theme-provider";

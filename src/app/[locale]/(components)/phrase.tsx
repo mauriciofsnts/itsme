@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import SakuraAnimationComponent from "@/components/sakura";
-import SectionTitle from "../../section-title";
+import SectionTitle from "../../../components/section-title";
 
 const Phrase = () => {
   const [maleniaCombo, setMaleniaCombo] = useState<number>(0);

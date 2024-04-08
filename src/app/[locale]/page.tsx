@@ -1,11 +1,11 @@
-import Phrase from "@/components/parts/home/phrase";
-import Projects from "@/components/parts/home/projects";
-import Education from "@/components/parts/home/education";
-import Passion from "@/components/parts/home/passion";
-import Bio from "@/components/parts/home/bio";
-import Info from "@/components/parts/home/info";
-import Hero from "@/components/parts/home/hero";
-import Template from "@/components/parts/home/template";
+import Phrase from "@/app/[locale]/(components)/phrase";
+import Projects from "@/app/[locale]/(components)/projects";
+import Education from "@/app/[locale]/(components)/education";
+import Passion from "@/app/[locale]/(components)/passion";
+import Bio from "@/app/[locale]/(components)/bio";
+import Info from "@/app/[locale]/(components)/info";
+import Hero from "@/app/[locale]/(components)/hero";
+import Template from "@/app/[locale]/(components)/template";
 
 export default function Home() {
   return (
