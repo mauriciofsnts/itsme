@@ -13,6 +13,17 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: siteMetadata.title,
   description: siteMetadata.description,
+  openGraph: {
+    title: `${siteMetadata.title}`,
+    type: "website",
+    description: siteMetadata.description,
+  },
+  twitter: {
+    site: siteMetadata.siteUrl,
+    title: `${siteMetadata.title}`,
+    card: "summary_large_image",
+    description: siteMetadata.description,
+  },
 };
 
 export default function RootLayout({
