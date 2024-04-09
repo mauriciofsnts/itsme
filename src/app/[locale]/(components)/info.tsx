@@ -7,7 +7,6 @@ const Info = () => {
 
   return (
     <div className="flex flex-col-reverse md:flex-row  gap-5 mt-10">
-      {/* TODO: find pictures :) */}
       <div className="mt-10 flex flex-1 flex-row gap-5 justify-start h-full hidden">
         <div className="self-start">
           <Image
@@ -31,7 +30,7 @@ const Info = () => {
       </div>
 
       <div className="flex-1">
-        <SectionTitle>{t('info')}</SectionTitle>
+        <SectionTitle>{t("info")}</SectionTitle>
 
         <p className="text-sm text-[#3b3d41] leading-6 mt-5">
           {t("InfoParagraph1")}
