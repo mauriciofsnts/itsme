@@ -16,7 +16,7 @@ const Sidebar = () => {
 
   return (
     <aside className="md:max-w-[240px] w-screen h-20 md:h-screen flex md:flex-col gap-8 border-r-2 border-[#e1e4e8cc] p-10 md:p-10 justify-between">
-      <div className="flex md:flex-col gap-8">
+      <div className="flex md:flex-col w-full gap-8">
         <div className="md:mt-10 flex flex-row md:flex-col items-center md:items-start justify-between gap-5 w-full">
           <Logo />
 
@@ -115,7 +115,7 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className="md:flex ">
+      <div className="md:flex hidden">
         <LangSwitch />
       </div>
     </aside>
