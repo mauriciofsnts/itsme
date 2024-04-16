@@ -15,6 +15,11 @@
     "Speedify": "Speedify",
     "Squarefox": "Squarefox"
   },
+  "NotFound": {
+    "unfortunately": "Infelizmente, a página que você está procurando não existe.",
+    "inTheMeantime": "Enquanto isso, sinta-se à vontade para navegar para outra página na barra lateral ou voltar à página inicial.",
+    "returnToHomepage": "Retornar à página inicial"
+  },
   "Home": {
     "education": "Formação",
     "Impacta University of Technology": "Universidade Impacta de Tecnologia",
