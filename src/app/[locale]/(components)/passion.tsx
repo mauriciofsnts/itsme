@@ -22,7 +22,7 @@ const Passion = () => {
           <h3
             key={index}
             className={cn(
-              "font-medium tracking-tight text-2xl text-[#3b3d41] ",
+              "font-medium tracking-tight text-2xl text-[#3b3d41] dark:text-white/80",
               headingFont.className
             )}
           >

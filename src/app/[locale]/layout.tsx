@@ -46,10 +46,12 @@ export default function RootLayout({
             storageKey="mrtz-theme"
             disableTransitionOnChange
           >
-            <div className="flex flex-col md:flex-row overflow-hidden max-h-screen">
+            <div className="flex flex-col md:flex-row overflow-hidden max-h-screen dark:bg-[url('/noise.png')] bg-none">
               <Sidebar />
 
-              <div className="flex-grow overflow-auto">{children}</div>
+              <div className="flex-grow overflow-auto scroll-smooth">
+                {children}
+              </div>
             </div>
           </ThemeProvider>
         </NextIntlClientProvider>

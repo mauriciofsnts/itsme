@@ -32,15 +32,15 @@ const Info = () => {
       <div className="flex-1">
         <SectionTitle>{t("info")}</SectionTitle>
 
-        <p className="text-sm text-[#3b3d41] leading-6 mt-5">
+        <p className="text-sm text-[#3b3d41] dark:text-white leading-6 mt-5">
           {t("InfoParagraph1")}
         </p>
         <br />
-        <p className="text-sm text-[#3b3d41] leading-6">
+        <p className="text-sm text-[#3b3d41] dark:text-white leading-6">
           {t("InfoParagraph2")}
         </p>
         <br />
-        <p className="text-sm text-[#3b3d41] leading-6">
+        <p className="text-sm text-[#3b3d41] dark:text-white leading-6">
           {t("InfoParagraph3")}
         </p>
       </div>

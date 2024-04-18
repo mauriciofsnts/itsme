@@ -43,7 +43,7 @@ const Hero = () => {
           Mauricio Ferraz
         </h1>
 
-        <p className="text-xl md:text-2xl font-medium text-gray-500 mt-2">
+        <p className="text-xl md:text-2xl font-medium text-gray-500 dark:text-white/80 mt-2">
           {t("Role", { todayRole })}
         </p>
       </div>

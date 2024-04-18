@@ -50,7 +50,7 @@
       "NodejsDeveloper": "Desenvolvedor Node.js",
       "FullstackDeveloper": "Desenvolvedor Full-stack"
     },
-    "Role": "Sou um {todayRole} baseado no Brasil",
+    "Role": "Resido no Brasil e atuo como {todayRole}",
     "Bio": "Bio",
     "BioItens": {
       "StartedCareer": "Comecei minha carreira como desenvolvedor",

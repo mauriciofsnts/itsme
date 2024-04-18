@@ -15,14 +15,16 @@ export default function LocaleSwitcher() {
   };
 
   return (
-    <div>
-      <select value={locale} onChange={switchLocale}>
-        {locales.map((loc) => (
-          <option key={loc.code} value={loc.code}>
-            {loc.name}
-          </option>
-        ))}
-      </select>
-    </div>
+    <select
+      value={locale}
+      onChange={switchLocale}
+      className="bg-white dark:bg-zinc-800 border outline-none border-gray-300 dark:border-zinc-900 text-gray-800 dark:text-white shadow-lg text-sm rounded-lg block w-full p-2"
+    >
+      {locales.map((loc) => (
+        <option key={loc.code} value={loc.code}>
+          {loc.name}
+        </option>
+      ))}
+    </select>
   );
 }

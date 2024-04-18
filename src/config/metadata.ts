@@ -3,7 +3,7 @@ const siteMetadata = {
   author: "Mauricio Ferraz",
   description:
     "Welcome to my personal website, where you can explore my creative world through my portfolio, blog, and projects. Dive into my journey of design, development, and reflections as you browse through my creations. Join me on this journey of innovation and inspiration. Welcome aboard!",
-  theme: "light", // system, dark or light
+  theme: "dark", // system, dark or light
   siteUrl: "https://mrzt.dev",
   siteRepo: "https://github.com/mauriciofsnts/itsme",
   email: "mauriciofsnts@gmail.com",

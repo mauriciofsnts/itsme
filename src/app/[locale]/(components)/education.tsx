@@ -20,7 +20,7 @@ const Education = () => {
         <div className="flex justify-center flex-col flex-1 w-full">
           <h3
             className={cn(
-              "font-medium tracking-tight text-3xl text-[#3b3d41] ",
+              "font-medium tracking-tight text-3xl text-[#3b3d41] dark:text-white/80",
               headingFont.className
             )}
           >
@@ -29,7 +29,7 @@ const Education = () => {
 
           <h3
             className={cn(
-              "font-medium tracking-tight text-2xl text-[#A0A5AC] ",
+              "font-medium tracking-tight text-2xl text-[#A0A5AC] dark:text-white",
               headingFont.className
             )}
           >
