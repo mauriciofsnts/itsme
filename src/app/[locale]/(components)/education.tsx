@@ -38,17 +38,6 @@ const Education = () => {
 
           <p className="text-xs mt-2 text-[#A0A5AC]">2023 - 2024</p>
         </div>
-
-        <div className="flex-1 hidden md:flex justify-center">
-          <Image
-            alt="Impacta Tecnologia"
-            src="/university.svg"
-            width="300"
-            height="200"
-            className="rounded-lg"
-            draggable={false}
-          />
-        </div>
       </div>
     </div>
   );

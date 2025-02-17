@@ -50,7 +50,7 @@ const Hero = () => {
 
       <div className="hidden flex-1 xl:flex flex-row flex-nowrap justify-end gap-5 bg-gradient-radial mt-20 md:mt-0 ">
         <Image
-          alt="Placeholder"
+          alt="Hero"
           src="/hero-image.svg"
           width="400"
           height="225"

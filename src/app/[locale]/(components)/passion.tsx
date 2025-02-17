@@ -35,7 +35,7 @@ const Passion = () => {
         <Image
           alt="Coding"
           src="/astronaut.svg"
-          width="240"
+          width="270"
           height="380"
           className="rounded-lg"
           draggable={false}
