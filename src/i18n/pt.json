@@ -1,63 +1,8 @@
 {
-  "Sidebar": {
-    "Projects": "Projetos",
-    "Ideas": "Ideias",
-    "CV": "CV",
-    "About": "Sobre",
-    "Hermes": "Hermes",
-    "Omnia": "Omnia",
-    "Itsme": "Itsme",
-    "Web Interfaces": "Interfaces Web",
-    "Linkedin": "Linkedin",
-    "Github": "Github",
-    "Mail": "E-mail",
-    "Contact": "Contato",
-    "Speedify": "Speedify",
-    "Squarefox": "Squarefox"
-  },
-  "NotFound": {
-    "unfortunately": "Infelizmente, a página que você está procurando não existe.",
-    "inTheMeantime": "Enquanto isso, sinta-se à vontade para navegar para outra página na barra lateral ou voltar à página inicial.",
-    "returnToHomepage": "Retornar à página inicial"
-  },
-  "Home": {
-    "education": "Formação",
-    "Impacta University of Technology": "Universidade Impacta de Tecnologia",
-    "Postgraduate in Digital Solutions Architecture": "Pós-graduação em Arquitetura de Soluções Digitais",
-    "info": "Resumo",
-    "InfoParagraph1": "Sou pós-graduado pela Universidade Impacta em Arquitetura de Soluções Digitais, tendo concluído meu curso em fevereiro de 2024",
-    "InfoParagraph2": "Desde a infância, sou apaixonado por tecnologia, sempre fascinado pela ideia de criar soluções impactantes para os usuários. Essa paixão me impulsionou a explorar diversas áreas dentro do campo da tecnologia, constantemente buscando maneiras de inovar e aprimorar a experiência do usuário por meio de soluções criativas e eficientes",
-    "InfoParagraph3": "Ao longo da minha carreira, mergulhei no desenvolvimento de plataformas de alta complexidade, colaborando com uma variedade de clientes em diferentes segmentos. Meu trabalho inclui contribuições significativas para projetos renomados como Senac, SOSDocs, Subway, TGI e Starbucks. Essas experiências enriquecedoras me proporcionaram uma compreensão ampla das necessidades e requisitos de diferentes indústrias, além de aprimorar minhas habilidades técnicas em diversos contextos.",
-    "ThingsILoveToDo": "Coisas que amo fazer",
-    "Projects": "Projetos",
-    "PassionItems": {
-      "Solve Problems": "Resolver problemas",
-      "Competitive Gaming": "Jogos competitivos",
-      "Coffee": "Café"
-    },
-    "MyProjects": {
-      "Vulcano": "Vulcano é um bot do discord que desenvolvi para me ajudar com minhas tarefas diárias. Ele possui muitos recursos que me ajudam a gerenciar meu servidor e também a me divertir com meus amigos.",
-      "Hermes": "Hermes é um serviço que simplifica a integração de funcionalidades de e-mail em suas aplicações, eliminando a dor de cabeça de lidar com as intrincadas complexidades do SMTP.",
-      "Todos": "Todos é um aplicativo simples de tarefas que desenvolvi para me ajudar a gerenciar minhas tarefas diárias. Ele possui muitos recursos que me ajudam a gerenciar minhas tarefas e também a me divertir com meus amigos.",
-      "Squarefox": "Squarefox visa mudar o conceito de design web em todo o mundo. Somos uma equipe de profissionais apaixonados por criar, projetar e desenvolver sites."
-    },
-    "Roles": {
-      "FrontEndDeveloper": "Desenvolvedor Front-end",
-      "ReactDeveloper": "Desenvolvedor React",
-      "TypeScriptDeveloper": "Desenvolvedor TypeScript",
-      "JavaScriptDeveloper": "Desenvolvedor JavaScript",
-      "BackendDeveloper": "Desenvolvedor Back-end",
-      "NodejsDeveloper": "Desenvolvedor Node.js",
-      "FullstackDeveloper": "Desenvolvedor Full-stack"
-    },
-    "Role": "Resido no Brasil e atuo como {todayRole}",
-    "Bio": "Bio",
-    "BioItens": {
-      "StartedCareer": "Comecei minha carreira como desenvolvedor",
-      "FrontEndDeveloper": "Desenvolvedor Front-end na _fourcicle",
-      "Graduated": "Graduado em Ciência da Computação",
-      "FullstackDeveloper": "Me tornei um desenvolvedor full-stack na SouthRock Lab",
-      "Postgraduate": "Concluí minha pós-graduação em Arquitetura de Soluções Digitais"
-    }
+  "home": {
+    "title": "Software engineer focused on developing large-scale applications.",
+    "experience": "With <b>over 5 years</b>, I have worked on the development of cutting-edge applications and tools.",
+    "specialized": "I specialize in <b>leading software projects</b> with a deep understanding of the software development lifecycle and industry best practices.",
+    "functions": "I highlight the creation and <b>implementation of innovative software solutions that optimized processes and drove results for various businesses.</b> I have been successful in developing scalable and high-performance system architectures, ensuring the efficiency and security of applications."
   }
 }
