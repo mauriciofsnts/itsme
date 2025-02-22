@@ -23,7 +23,7 @@ installs:
         enabled: true
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-prod
-          traefik.ingress.kubernetes.io/router.middlewares: default-hsts-middleware@kubernetescrd,default-https-middleware@kubernetescrd
+          # traefik.ingress.kubernetes.io/router.middlewares: default-hsts-middleware@kubernetescrd,default-https-middleware@kubernetescrd
         hosts:
           - host: mrzt.dev
             paths:
