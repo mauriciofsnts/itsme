@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "./ui/button";
 import { siteMetadata } from "@/config/metadata";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -8,12 +9,17 @@ const Header = () => {
       <h1 className="font-bold">{siteMetadata.author}</h1>
 
       <div>
-        <Button variant="link" className="font-bold">
-          Linkedin
-        </Button>
-        <Button variant="link" className="font-bold">
-          Github
-        </Button>
+        <Link href={siteMetadata.linkedin} target="_blank">
+          <Button variant="link" className="font-bold">
+            Linkedin
+          </Button>
+        </Link>
+
+        <Link href={siteMetadata.siteRepo} target="_blank">
+          <Button variant="link" className="font-bold">
+            Github
+          </Button>
+        </Link>
         <span className="font-semibold ml-2">{siteMetadata.email}</span>
       </div>
     </header>

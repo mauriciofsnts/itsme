@@ -10,7 +10,11 @@ import Header from "@/components/header";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/footer";
 
-const font = Onest({ subsets: ["latin"], preload: true });
+const font = Onest({
+  subsets: ["latin"],
+  preload: true,
+  adjustFontFallback: true,
+});
 
 export const metadata: Metadata = {
   title: siteMetadata.title,
