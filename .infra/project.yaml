@@ -1,0 +1,35 @@
+name: itsme
+
+# helm chart repository
+repos:
+  - name: dbcafe-base
+    url: https://code.db.cafe/api/packages/dbcafe/helm
+
+# base installs
+installs:
+  - name: notepad
+    chart: dbcafe-base/public-app
+    values:
+      image:
+        repository: ghcr.io/mauriciofsnts/itsme
+        pullPolicy: Always
+        tag: master
+
+      service:
+        type: ClusterIP
+        port: 3000
+
+      livenessProbe:
+        httpGet:
+          path: /
+          port: http
+      readinessProbe:
+        httpGet:
+          path: /
+          port: http
+
+# environments
+envs:
+  - name: master
+    namespace: itsme
+    branch: master
