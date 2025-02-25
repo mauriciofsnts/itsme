@@ -1,8 +1,36 @@
 {
+  "footer": {
+    "getInTouch": "Entre em contato",
+    "connectOnLinkedin": "Conectar no LinkedIn"
+  },
   "home": {
-    "title": "Software engineer focused on developing large-scale applications.",
-    "experience": "With <b>over 5 years</b>, I have worked on the development of cutting-edge applications and tools.",
-    "specialized": "I specialize in <b>leading software projects</b> with a deep understanding of the software development lifecycle and industry best practices.",
-    "functions": "I highlight the creation and <b>implementation of innovative software solutions that optimized processes and drove results for various businesses.</b> I have been successful in developing scalable and high-performance system architectures, ensuring the efficiency and security of applications."
+    "title": "Desenvolvedor focado em aplicações em larga escala.",
+    "experience": "Com <b>mais de 5 anos</b>, atuei no desenvolvimento de aplicações e projetos de larga escala.",
+    "specialized": "Sou especializado em <b>liderar projetos</b> com um profundo entendimento do ciclo de vida do desenvolvimento de software e das melhores práticas da indústria.",
+    "functions": "Me destaco na criação e <b>implementação de soluções de software inovadoras que otimizaram processos e impulsionaram resultados para diversos negócios.</b> Obtive sucesso no desenvolvimento de arquiteturas de sistema escaláveis e de alto desempenho, garantindo a eficiência e a segurança das aplicações.",
+    "randomToughts": "Ideias Aleatórios",
+    "soon": "Em breve"
+  },
+  "projects": {
+    "keycloak": {
+      "title": "Personalização do Keycloak: Um Guia Passo a Passo para Temas e Interfaces",
+      "description": "Desbloqueie o potencial dos seus sistemas com Omnia"
+    },
+    "omnia": {
+      "title": "Conecte Tudo: Apresentando Omnia",
+      "description": "Desbloqueie o potencial dos seus sistemas com Omnia"
+    },
+    "squarefox": {
+      "title": "Eleve Sua Presença Online com os Designs Impressionantes da Squarefox",
+      "description": "Squarefox: Criando sites impressionantes e eficazes"
+    },
+    "vulcano": {
+      "title": "Vulcano",
+      "description": "Um bot Discord multiuso projetado para várias tarefas. Ele se integra com APIs de notícias para buscar atualizações e fornece geradores de dados para fins de desenvolvimento (por exemplo, CPF, RG)"
+    },
+    "hermes": {
+      "title": "Hermes",
+      "description": "Serviço de API de e-mail para integração perfeita de funcionalidades de e-mail em aplicativos."
+    }
   }
 }

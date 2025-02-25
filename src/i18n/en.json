@@ -1,8 +1,36 @@
 {
+  "footer": {
+    "getInTouch": "Get in touch",
+    "connectOnLinkedin": "Connect on Linkedin"
+  },
   "home": {
     "title": "Software engineer focused on developing large-scale applications.",
     "experience": "With <b>over 5 years</b>, I have worked on the development of cutting-edge applications and tools.",
     "specialized": "I specialize in <b>leading software projects</b> with a deep understanding of the software development lifecycle and industry best practices.",
-    "functions": "I highlight the creation and <b>implementation of innovative software solutions that optimized processes and drove results for various businesses.</b> I have been successful in developing scalable and high-performance system architectures, ensuring the efficiency and security of applications."
+    "functions": "I highlight the creation and <b>implementation of innovative software solutions that optimized processes and drove results for various businesses.</b> I have been successful in developing scalable and high-performance system architectures, ensuring the efficiency and security of applications.",
+    "randomToughts": "Random Toughts",
+    "soon": "Soon"
+  },
+  "projects": {
+    "keycloak": {
+      "title": "Keycloak Customization: A Step-by-Step Guide to Themes and Interfaces",
+      "description": "Unlock the potential of your systems with Omnia"
+    },
+    "omnia": {
+      "title": "Connect Everything: Introducing Omnia",
+      "description": "Unlock the potential of your systems with Omnia"
+    },
+    "squarefox": {
+      "title": "Elevate Your Online Presence with Squarefox's Stunning Designs",
+      "description": "Squarefox: Creating stunning and effective websites"
+    },
+    "vulcano": {
+      "title": "Vulcano",
+      "description": "A multi-purpose Discord bot designed for various tasks. It integrates with news APIs to fetch updates and provides data generators for development purposes (e.g., CPF, RG)."
+    },
+    "hermes": {
+      "title": "Hermes",
+      "description": "Email API service for seamless email functionality integration in applications."
+    }
   }
 }

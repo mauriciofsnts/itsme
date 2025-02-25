@@ -3,13 +3,16 @@ import Link from "next/link";
 import { Typography } from "./ui/typography";
 import { ArrowUpRight } from "lucide-react";
 import { siteMetadata } from "@/config/metadata";
+import { getTranslations } from "next-intl/server";
 
-function Footer() {
+async function Footer() {
+  const t = await getTranslations();
+
   return (
     <footer className="w-full max-w-7xl flex justify-between p-10">
       <div className="flex flex-col">
         <Typography variant="h4" className="text-stone-500">
-          Get in touch
+          {t("footer.getInTouch")}
         </Typography>
         <Typography variant="h3" className="text-primary">
           {siteMetadata.email}
@@ -18,7 +21,7 @@ function Footer() {
 
       <div className="flex flex-col">
         <Typography variant="h4" className="text-stone-500">
-          Connect on Linkedin
+          {t("footer.connectOnLinkedin")}
         </Typography>
 
         <Link href={siteMetadata.linkedin} target="_blank">
