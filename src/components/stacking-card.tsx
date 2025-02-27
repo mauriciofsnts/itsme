@@ -25,7 +25,7 @@ export default function StackingCards({
   });
   return (
     <ReactLenis root>
-      <main ref={container}>
+      <div ref={container} className="p-10">
         {projects.map((project, i) => {
           const targetScale = 1 - (projects.length - i) * 0.05;
           return (
@@ -42,7 +42,7 @@ export default function StackingCards({
             />
           );
         })}
-      </main>
+      </div>
     </ReactLenis>
   );
 }
@@ -91,8 +91,9 @@ export const Card: React.FC<CardProps> = ({
         className={`flex flex-col relative -top-[5%] h-[450px] w-[100%] rounded-md p-10 origin-top`}
       >
         <h2 className="text-2xl text-left font-semibold text-black">{title}</h2>
-        <div className={`flex h-full mt-5 gap-10`}>
-          <div className={`w-[40%] relative top-[10%]`}>
+
+        <div className={`flex md:flex-row flex-col-reverse h-full mt-5 gap-5`}>
+          <div className={`w-[100%] md:w-[40%] relative top-[10%]`}>
             <p className="text-sm text-black">{description}</p>
             <span className="flex items-center gap-2 pt-2">
               <Button
@@ -109,7 +110,7 @@ export const Card: React.FC<CardProps> = ({
           </div>
 
           <div
-            className={`relative w-[60%] h-full rounded-lg overflow-hidden `}
+            className={`relative w-[100%] md:w-[60%] h-full rounded-lg overflow-hidden `}
           >
             <motion.div
               className={`w-full h-full`}

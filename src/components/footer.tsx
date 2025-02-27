@@ -9,12 +9,12 @@ async function Footer() {
   const t = await getTranslations();
 
   return (
-    <footer className="w-full max-w-7xl flex justify-between p-10">
+    <footer className="w-full max-w-7xl flex flex-col md:flex-row gap-y-10 justify-between p-10 h-full">
       <div className="flex flex-col">
         <Typography variant="h4" className="text-stone-500">
           {t("footer.getInTouch")}
         </Typography>
-        <Typography variant="h3" className="text-primary">
+        <Typography variant="h3" className="text-primary md:text-2xl text-xl">
           {siteMetadata.email}
         </Typography>
       </div>
@@ -27,7 +27,7 @@ async function Footer() {
         <Link href={siteMetadata.linkedin} target="_blank">
           <Typography
             variant="h3"
-            className="text-primary flex flex-row gap-3 group hover:text-[#0a66c2]"
+            className="text-primary md:text-2xl text-xl flex flex-row gap-3 group hover:text-[#0a66c2]"
           >
             {siteMetadata.author}
             <ArrowUpRight />

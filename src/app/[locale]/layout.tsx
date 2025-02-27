@@ -52,7 +52,7 @@ export default function RootLayout({
             storageKey="mrtz-theme"
             disableTransitionOnChange
           >
-            <div className="justify-center flex flex-col items-center">
+            <div className="flex flex-col justify-center items-center">
               <Header />
               {children}
               <Footer />

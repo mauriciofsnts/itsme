@@ -34,17 +34,17 @@ export default async function Home() {
   ];
 
   return (
-    <div className="w-full max-w-7xl flex flex-col gap-14">
-      <section className="flex flex-col justify-between p-10 mt-14 gap-16">
+    <div className="w-full max-w-7xl flex flex-col gap-14 px-0 p-5 sm:px-6 lg:px-0">
+      <section className="flex flex-col justify-between p-6 sm:p-10 mt-0 md:mt-16 gap-10 sm:gap-16">
         <Typography
           variant="h1"
-          className="max-w-[720px] text-6xl lg:text-6xl tracking-wide font-bold"
+          className="max-w-[720px] text-4xl tracking-wide font-bold lg:text-6xl"
         >
           {t("home.title")}
         </Typography>
 
-        <div className="flex flex-row gap-32 items-start">
-          <div className="flex flex-col gap-5">
+        <div className="flex flex-col md:flex-row gap-10 md:gap-32 items-start">
+          <div className="flex flex-col gap-10">
             <Typography
               variant="h3"
               className="font-semibold tracking-wide text-stone-400 text-lg"
@@ -81,17 +81,17 @@ export default async function Home() {
 
       <StackingCards projects={projects} />
 
-      <section className="flex flex-col justify-between p-10 gap-10">
+      <section className="flex flex-col justify-between p-10 sm:p-10 gap-8 sm:gap-10">
         <Typography variant="h3">{t("home.randomToughts")}</Typography>
 
-        <div className="">
+        <div>
           {[
             t("projects.keycloak.title"),
             t("projects.omnia.title"),
             t("projects.squarefox.title"),
           ].map((v) => (
             <div
-              className="flex w-full flex-row justify-between text-stone-500 select-none cursor-pointer"
+              className="flex flex-col sm:flex-row md:py-0 py-3 w-full justify-between text-stone-500 select-none cursor-pointer"
               key={v}
             >
               <Typography variant="h4">{v}</Typography>
