@@ -12,8 +12,8 @@ installs:
     values:
       image:
         repository: ghcr.io/mauriciofsnts/itsme
-        pullPolicy: Always
-        tag: master
+        pullPolicy: IfNotPresent
+        tag: {{ .Data.Tag | orDefault .Ref }}
 
       service:
         type: ClusterIP
