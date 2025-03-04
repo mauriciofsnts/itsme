@@ -12,8 +12,6 @@ import Footer from "@/components/footer";
 
 const font = Onest({
   subsets: ["latin"],
-  preload: true,
-  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {

@@ -9,7 +9,8 @@
     "specialized": "I specialize in <b>leading software projects</b> with a deep understanding of the software development lifecycle and industry best practices.",
     "functions": "I highlight the creation and <b>implementation of innovative software solutions that optimized processes and drove results for various businesses.</b> I have been successful in developing scalable and high-performance system architectures, ensuring the efficiency and security of applications.",
     "randomToughts": "Random Toughts",
-    "soon": "Soon"
+    "soon": "Soon",
+    "seeMore": "See more"
   },
   "projects": {
     "keycloak": {

@@ -5,6 +5,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { MoveRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export type Projects = {
   title: string;
@@ -68,6 +69,7 @@ export const Card: React.FC<CardProps> = ({
   range,
   targetScale,
 }) => {
+  const t = useTranslations("home");
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -102,7 +104,7 @@ export const Card: React.FC<CardProps> = ({
                 disabled
               >
                 <a href={"#"} target="_blank">
-                  See more
+                  {t("seeMore")}
                 </a>
                 <MoveRight />
               </Button>
