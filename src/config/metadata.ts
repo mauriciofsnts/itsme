@@ -6,7 +6,7 @@ const siteMetadata = {
   theme: "dark", // system, dark or light
   siteUrl: "https://mrzt.dev",
   siteRepo: "https://github.com/mauriciofsnts/itsme",
-  email: "mauriciofsnts@squarefox.digital",
+  email: "mauricio@squarefox.digital",
   siteLogo: "/images/logo.png",
   socialBanner: "/static/images/twitter-card.png",
   linkedin: "https://www.linkedin.com/in/mauriciofsnts/",
