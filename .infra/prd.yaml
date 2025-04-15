@@ -1,0 +1,33 @@
+itsme:
+  image:
+    repository: ghcr.io/mauriciofsnts/itsme
+    pullPolicy: IfNotPresent
+    tag: {{ releaseData "tag" }}
+
+  service:
+    type: ClusterIP
+    port: 3000
+
+  ingress:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      # traefik.ingress.kubernetes.io/router.middlewares: default-hsts-middleware@kubernetescrd,default-https-middleware@kubernetescrd
+    hosts:
+      - host: mrzt.dev
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls:
+      - secretName: mrzt-dev-tls
+        hosts:
+          - mrzt.dev
+
+  livenessProbe:
+    httpGet:
+      path: /
+      port: http
+  readinessProbe:
+    httpGet:
+      path: /
+      port: http

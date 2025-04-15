@@ -1,4 +1,4 @@
-import StackingCards from "@/components/stacking-card";
+import StackingCards, { Projects } from "@/components/stacking-card";
 import { HyperText } from "@/components/hyper-text";
 import { Typography } from "@/components/ui/typography";
 import { getTranslations } from "next-intl/server";
@@ -6,29 +6,33 @@ import { getTranslations } from "next-intl/server";
 export default async function Home() {
   const t = await getTranslations();
 
-  const projects = [
+  const projects: Projects[] = [
     {
       title: "Omnia",
       description: t("projects.omnia.description"),
-      link: "/pexels-expect-best-79873-351265.jpg",
+      imageUrl: "/pexels-expect-best-79873-351265.jpg",
+      link: "/projects/omnia",
       color: "#fff",
     },
     {
       title: "Squarefox",
       description: t("projects.squarefox.description"),
-      link: "/red-fox-vulpes-vulpes-european-forest.jpg",
+      imageUrl: "/red-fox-vulpes-vulpes-european-forest.jpg",
+      link: "/projects/omnia",
       color: "#fff",
     },
     {
       title: "Hermes",
       description: t("projects.hermes.description"),
-      link: "/pexels-ijonrobles-2388936.jpg",
+      imageUrl: "/pexels-ijonrobles-2388936.jpg",
+      link: "/projects/omnia",
       color: "#fff",
     },
     {
       title: "Vulcano",
       description: t("projects.vulcano.description"),
-      link: "/volcanic-eruption-natural-disaster.jpg",
+      imageUrl: "/volcanic-eruption-natural-disaster.jpg",
+      link: "/projects/omnia",
       color: "#fff",
     },
   ];

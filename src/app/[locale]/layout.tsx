@@ -9,9 +9,11 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/footer";
+import { ViewTransitions } from "next-view-transitions";
 
 const font = Onest({
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -41,27 +43,29 @@ export default function RootLayout({
   const messages = useMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body className={cn(font.className, "dark:bg-[url('/noise.png')]")}>
-        <NextIntlClientProvider messages={messages}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme={siteMetadata.theme}
-            storageKey="mrtz-theme"
-            disableTransitionOnChange
-          >
-            <div className="flex flex-col justify-center items-center">
-              <Header />
-              {children}
-              <Footer />
-            </div>
-          </ThemeProvider>
-        </NextIntlClientProvider>
-      </body>
+    <ViewTransitions>
+      <html lang={locale} suppressHydrationWarning>
+        <body className={cn(font.className, "dark:bg-[url('/noise.png')]")}>
+          <NextIntlClientProvider messages={messages}>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme={siteMetadata.theme}
+              storageKey="mrtz-theme"
+              disableTransitionOnChange
+            >
+              <div className="flex flex-col justify-center items-center">
+                <Header />
+                {children}
+                <Footer />
+              </div>
+            </ThemeProvider>
+          </NextIntlClientProvider>
+        </body>
 
-      {process.env.NODE_ENV === "production" && (
-        <GoogleAnalytics gaId={process.env.GTAG!} />
-      )}
-    </html>
+        {process.env.NODE_ENV === "production" && (
+          <GoogleAnalytics gaId={process.env.GTAG!} />
+        )}
+      </html>
+    </ViewTransitions>
   );
 }

@@ -1,17 +1,21 @@
 "use client";
-import { ReactLenis } from "lenis/react";
-import { useTransform, motion, useScroll, MotionValue } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+
+import { useTranslations } from "next-intl";
+import { useTransitionRouter } from "next-view-transitions";
+
+import { ReactLenis } from "lenis/react";
+import { useTransform, motion, useScroll, MotionValue } from "framer-motion";
 import { Button } from "./ui/button";
 import { MoveRight } from "lucide-react";
-import { useTranslations } from "next-intl";
 
 export type Projects = {
   title: string;
   description: string;
   link: string;
   color: string;
+  imageUrl: string;
 };
 
 export default function StackingCards({
@@ -33,13 +37,14 @@ export default function StackingCards({
             <Card
               key={`p_${i}`}
               i={i}
-              url={project?.link}
-              title={project?.title}
-              color={project?.color}
-              description={project?.description}
+              url={project.link}
+              title={project.title}
+              color={project.color}
+              description={project.description}
               progress={scrollYProgress}
               range={[i * 0.25, 1]}
               targetScale={targetScale}
+              imageUrl={project.imageUrl}
             />
           );
         })}
@@ -54,6 +59,7 @@ interface CardProps {
   description: string;
   url: string;
   color: string;
+  imageUrl: string;
   progress: MotionValue<number>;
   range: [number, number];
   targetScale: number;
@@ -68,9 +74,12 @@ export const Card: React.FC<CardProps> = ({
   progress,
   range,
   targetScale,
+  imageUrl,
 }) => {
   const t = useTranslations("home");
+  const router = useTransitionRouter();
   const container = useRef(null);
+
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start end", "start start"],
@@ -98,12 +107,13 @@ export const Card: React.FC<CardProps> = ({
           <div className={`w-[100%] md:w-[40%] relative top-[10%]`}>
             <p className="text-sm text-black">{description}</p>
             <span className="flex items-center gap-2 pt-2">
-              <Button
-                variant="link"
-                className="cursor-pointer text-black px-0"
-                disabled
-              >
-                <a href={"#"} target="_blank">
+              <Button variant="link" className="cursor-pointer text-black px-0">
+                <a
+                  onClick={(e) => {
+                    e.preventDefault();
+                    router.push(url, { onTransitionReady: slideInOut });
+                  }}
+                >
                   {t("seeMore")}
                 </a>
                 <MoveRight />
@@ -118,7 +128,7 @@ export const Card: React.FC<CardProps> = ({
               className={`w-full h-full`}
               style={{ scale: imageScale }}
             >
-              <Image fill src={url} alt="image" className="object-cover" />
+              <Image fill src={imageUrl} alt="image" className="object-cover" />
             </motion.div>
           </div>
         </div>
@@ -126,3 +136,43 @@ export const Card: React.FC<CardProps> = ({
     </div>
   );
 };
+
+function slideInOut() {
+  document.documentElement.animate(
+    [
+      {
+        opacity: 1,
+        transform: "translate(0, 0)",
+      },
+      {
+        opacity: 0,
+        transform: "translate(-100px, 0)",
+      },
+    ],
+    {
+      duration: 400,
+      easing: "ease",
+      fill: "forwards",
+      pseudoElement: "::view-transition-old(root)",
+    }
+  );
+
+  document.documentElement.animate(
+    [
+      {
+        opacity: 0,
+        transform: "translate(100px, 0)",
+      },
+      {
+        opacity: 1,
+        transform: "translate(0, 0)",
+      },
+    ],
+    {
+      duration: 400,
+      easing: "ease",
+      fill: "forwards",
+      pseudoElement: "::view-transition-new(root)",
+    }
+  );
+}
