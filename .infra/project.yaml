@@ -1,4 +1,5 @@
 name: itsme
+version: v2
 
 # helm chart repository
 repos:
