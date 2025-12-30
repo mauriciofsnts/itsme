@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header className="w-full max-w-7xl flex flex-row justify-between items-center p-10 gap-4 sm:gap-0">
       <Link href="/">
-        <Button variant="link">
+        <Button variant="link" className="p-0">
           <h1 className="font-bold text-lg sm:text-xl">
             {siteMetadata.author}
           </h1>
