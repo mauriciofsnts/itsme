@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang={locale} suppressHydrationWarning>
-        <body className={cn(font.className, "dark:bg-[url('/noise.png')]")}>
+        <body className={cn(font.className, "dark:noise-bg")}>
           <NextIntlClientProvider messages={messages}>
             <ThemeProvider
               attribute="class"
