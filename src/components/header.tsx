@@ -7,7 +7,13 @@ import { Github, Linkedin } from "lucide-react";
 const Header = () => {
   return (
     <header className="w-full max-w-7xl flex flex-row justify-between items-center p-10 gap-4 sm:gap-0">
-      <h1 className="font-bold text-lg sm:text-xl">{siteMetadata.author}</h1>
+      <Link href="/">
+        <Button variant="link">
+          <h1 className="font-bold text-lg sm:text-xl">
+            {siteMetadata.author}
+          </h1>
+        </Button>
+      </Link>
 
       <div className="flex flex-wrap items-center sm:justify-normal justify-end gap-1 sm:gap-3">
         <Link href={siteMetadata.linkedin} target="_blank">
