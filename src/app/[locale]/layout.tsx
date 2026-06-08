@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Onest } from "next/font/google";
-import { NextIntlClientProvider, useMessages } from "next-intl";
+import { NextIntlClientProvider, getMessages } from "next-intl";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { siteMetadata } from "@/config/metadata";
 
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }>) {
-  const { locale } = params;
-  const messages = useMessages();
+  const { locale } = await params;
+  const messages = await getMessages();
 
   return (
     <ViewTransitions>
