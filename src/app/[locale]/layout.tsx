@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Onest } from "next/font/google";
-import { NextIntlClientProvider, getMessages } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { siteMetadata } from "@/config/metadata";
 
