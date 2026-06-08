@@ -17,7 +17,7 @@ spec:
         - name: harbor-pull-secret
       containers:
         - name: itsme
-          image: harbor.mrzt.dev/mrzt/itsme
+          image: harbor.mrzt.dev/mrzt/itsme:master
           ports:
             - name: http
               containerPort: 3000
