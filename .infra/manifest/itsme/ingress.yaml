@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: itsme
+  namespace: mrzt
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
+    - host: mrzt.dev
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: itsme
+                port:
+                  name: http
+  tls:
+    - secretName: mrzt-dev-tls
+      hosts:
+        - mrzt.dev

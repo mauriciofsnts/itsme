@@ -10,49 +10,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Set up Docker Context for Buildx
-        id: buildx-context
-        run: |
-          docker context create builders
+        uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v2
-        with:
-          version: latest
-          endpoint: builders
+        uses: docker/setup-buildx-action@v3
 
-      - name: "Login to GitHub Container Registry"
-        uses: docker/login-action@v1
+      - name: Login to Harbor
+        uses: docker/login-action@v3
         with:
-          registry: ghcr.io
-          username: ${{github.actor}}
-          password: ${{secrets.GITHUB_TOKEN}}
-
-      - name: Set short git commit SHA
-        id: vars
-        run: |
-          echo "COMMIT_SHORT_SHA=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
+          registry: harbor.mrzt.dev
+          username: ${{ secrets.HARBOR_USERNAME }}
+          password: ${{ secrets.HARBOR_PASSWORD }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           file: Dockerfile
           context: .
           push: true
-          tags: ghcr.io/mauriciofsnts/itsme:${{ env.COMMIT_SHORT_SHA }},ghcr.io/mauriciofsnts/itsme:${{ github.ref_name }}
-
-      - name: Upgrade install
-        uses: pauloo27/k7z-upgrade@v1.1.0
-        with:
-          base_url: https://k7z.mrzt.dev/api/v0
-          team_name: main
-          project_name: itsme
-          api_key: ${{ secrets.K7Z_SECRET }}
-          ref: ${{ github.ref_name }}
-          data: |
-            {
-              "tag": "${{ env.COMMIT_SHORT_SHA }}"
-            }
+          tags: harbor.mrzt.dev/mrzt/itsme:${{ github.ref_name }}
+          cache-from: type=registry,ref=harbor.mrzt.dev/mrzt/itsme:buildcache
+          cache-to: type=registry,ref=harbor.mrzt.dev/mrzt/itsme:buildcache,mode=max

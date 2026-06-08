@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: itsme
+  namespace: mrzt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: itsme
+  template:
+    metadata:
+      labels:
+        app: itsme
+    spec:
+      imagePullSecrets:
+        - name: harbor-pull-secret
+      containers:
+        - name: itsme
+          image: harbor.mrzt.dev/mrzt/itsme
+          ports:
+            - name: http
+              containerPort: 3000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
