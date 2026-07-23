@@ -1,41 +1,13 @@
-import StackingCards, { Projects } from "@/components/stacking-card";
+import StackingCards from "@/components/stacking-card";
 import { HyperText } from "@/components/hyper-text";
 import { Typography } from "@/components/ui/typography";
 import { getTranslations } from "next-intl/server";
+import { getProjects } from "@/data/projects";
 
 export default async function Home() {
   const t = await getTranslations();
 
-  const projects: Projects[] = [
-    {
-      title: "Omnia",
-      description: t("projects.omnia.description"),
-      imageUrl: "/pexels-expect-best-79873-351265.jpg",
-      link: "/projects/omnia",
-      color: "#fff",
-    },
-    {
-      title: "Squarefox",
-      description: t("projects.squarefox.description"),
-      imageUrl: "/red-fox-vulpes-vulpes-european-forest.jpg",
-      link: "/projects/omnia",
-      color: "#fff",
-    },
-    {
-      title: "Hermes",
-      description: t("projects.hermes.description"),
-      imageUrl: "/pexels-ijonrobles-2388936.jpg",
-      link: "/projects/omnia",
-      color: "#fff",
-    },
-    {
-      title: "Vulcano",
-      description: t("projects.vulcano.description"),
-      imageUrl: "/volcanic-eruption-natural-disaster.jpg",
-      link: "/projects/omnia",
-      color: "#fff",
-    },
-  ];
+  const projects = getProjects(t);
 
   return (
     <div className="w-full max-w-7xl flex flex-col gap-14 px-0 p-5 sm:px-6 lg:px-0">

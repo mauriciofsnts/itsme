@@ -1,9 +1,5 @@
-import React from 'react'
+import { ProjectPage } from "@/components/project-page";
 
-function OminiaProject() {
-  return (
-    <div>OminiaProject</div>
-  )
+export default function OmniaProjectPage() {
+  return <ProjectPage projectKey="omnia" />;
 }
-
-export default OminiaProject

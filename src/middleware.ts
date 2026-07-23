@@ -7,7 +7,7 @@ const localesCodes = locales.map((locale) => locale.code);
 const nextIntlMiddleware = createMiddleware({
   locales: localesCodes,
   defaultLocale,
-  localePrefix: "never",
+  localePrefix: "as-needed",
   localeDetection: true,
 });
 

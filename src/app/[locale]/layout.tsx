@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Onest } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { siteMetadata } from "@/config/metadata";
 
@@ -17,21 +17,27 @@ const font = Onest({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: siteMetadata.title,
-  description: siteMetadata.description,
-  openGraph: {
-    title: `${siteMetadata.title}`,
-    type: "website",
-    description: siteMetadata.description,
-  },
-  twitter: {
-    site: siteMetadata.siteUrl,
-    title: `${siteMetadata.title}`,
-    card: "summary_large_image",
-    description: siteMetadata.description,
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("metadata");
+  const title = t("title");
+  const description = t("description");
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      type: "website",
+      description,
+    },
+    twitter: {
+      site: siteMetadata.siteUrl,
+      title,
+      card: "summary_large_image",
+      description,
+    },
+  };
+}
 
 export default async function RootLayout({
   children,

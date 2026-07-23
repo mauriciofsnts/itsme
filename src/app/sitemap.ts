@@ -1,6 +1,8 @@
 import { MetadataRoute } from "next";
 import { siteMetadata } from "@/config/metadata";
 
+const projectSlugs = ["omnia", "squarefox", "hermes", "vulcano"];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteMetadata.siteUrl;
 
@@ -11,11 +13,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
-    {
-      url: `${baseUrl}/projects/omnia`,
+    ...projectSlugs.map((slug) => ({
+      url: `${baseUrl}/projects/${slug}`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.8,
-    },
+    })),
   ];
 }

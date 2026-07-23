@@ -9,19 +9,12 @@ import { ReactLenis } from "lenis/react";
 import { useTransform, motion, useScroll, MotionValue } from "framer-motion";
 import { Button } from "./ui/button";
 import { MoveRight } from "lucide-react";
-
-export type Projects = {
-  title: string;
-  description: string;
-  link: string;
-  color: string;
-  imageUrl: string;
-};
+import type { Project } from "@/data/projects";
 
 export default function StackingCards({
   projects,
 }: {
-  projects: Projects[];
+  projects: Project[];
 }): JSX.Element {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({

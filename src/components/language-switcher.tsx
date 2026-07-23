@@ -1,17 +1,30 @@
 "use client";
-import { locales } from "@/lib/locales";
+
+import { locales, defaultLocale } from "@/lib/locales";
 import { useLocale } from "next-intl";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function LocaleSwitcher() {
   const locale = useLocale();
+  const pathname = usePathname();
   const router = useRouter();
 
   const switchLocale = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedLocale = locales.find((loc) => loc.code === e.target.value);
-    if (!selectedLocale) return;
-    document.cookie = `NEXT_LOCALE=${selectedLocale?.code}; path=/; max-age=31536000; SameSite=Lax`;
-    router.refresh();
+    const newLocale = e.target.value;
+    if (!locales.some((loc) => loc.code === newLocale)) return;
+
+    const localePrefix = `/${locale}`;
+    const pathWithoutLocale = pathname.startsWith(localePrefix)
+      ? pathname.slice(localePrefix.length) || "/"
+      : pathname;
+
+    const localizedPath =
+      newLocale === defaultLocale
+        ? pathWithoutLocale
+        : `/${newLocale}${pathWithoutLocale}`;
+
+    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+    router.push(localizedPath);
   };
 
   return (
