@@ -107,15 +107,12 @@ export const Card: React.FC<CardProps> = ({
           <div className={`w-[100%] md:w-[40%] relative top-[10%]`}>
             <p className="text-sm text-black">{description}</p>
             <span className="flex items-center gap-2 pt-2">
-              <Button variant="link" className="cursor-pointer text-black px-0">
-                <a
-                  onClick={(e) => {
-                    e.preventDefault();
-                    router.push(url, { onTransitionReady: slideInOut });
-                  }}
-                >
-                  {t("seeMore")}
-                </a>
+              <Button
+                variant="link"
+                className="cursor-pointer text-black px-0"
+                onClick={() => router.push(url, { onTransitionReady: slideInOut })}
+              >
+                {t("seeMore")}
                 <MoveRight />
               </Button>
             </span>
@@ -128,7 +125,7 @@ export const Card: React.FC<CardProps> = ({
               className={`w-full h-full`}
               style={{ scale: imageScale }}
             >
-              <Image fill src={imageUrl} alt="image" className="object-cover" />
+              <Image fill src={imageUrl} alt={title} className="object-cover" />
             </motion.div>
           </div>
         </div>
