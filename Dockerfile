@@ -11,6 +11,7 @@ WORKDIR /app
 
 # Copy only package manifests first to leverage Docker cache for dependencies.
 COPY package.json pnpm-lock.yaml ./
+RUN corepack install
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
 FROM base AS builder
