@@ -1,8 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 type CharacterSet = string[] | readonly string[];
 
@@ -11,7 +11,6 @@ interface HyperTextProps {
   className?: string;
   duration?: number;
   delay?: number;
-  as?: React.ElementType;
   startOnView?: boolean;
   animateOnHover?: boolean;
   characterSet?: CharacterSet;
@@ -26,14 +25,11 @@ export function HyperText({
   className,
   duration = 800,
   delay = 0,
-  as: Component = "div",
   startOnView = false,
   animateOnHover = true,
   characterSet = DEFAULT_CHARACTER_SET,
 }: HyperTextProps) {
-  const [displayText, setDisplayText] = useState<string[]>(() =>
-    children.split("")
-  );
+  const [displayText, setDisplayText] = useState<string[]>(() => children.split(""));
   const [isAnimating, setIsAnimating] = useState(false);
   const iterationCount = useRef(0);
   const elementRef = useRef<HTMLDivElement>(null);
@@ -78,8 +74,8 @@ export function HyperText({
             letter === " "
               ? letter
               : index <= iterationCount.current
-              ? children[index]
-              : characterSet[getRandomInt(characterSet.length)]
+                ? children[index]
+                : characterSet[getRandomInt(characterSet.length)]
           )
         );
         iterationCount.current += 0.1;
@@ -103,6 +99,7 @@ export function HyperText({
     >
       {displayText.map((letter, index) => (
         <motion.span
+          // biome-ignore lint/suspicious/noArrayIndexKey: character positions are stable, the array is never reordered or filtered
           key={index}
           className={cn("font-mono", letter === " " ? "w-3" : "")}
           initial={{ opacity: 0, y: 10 }}

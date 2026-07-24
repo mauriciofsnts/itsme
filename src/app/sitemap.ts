@@ -1,4 +1,4 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 import { siteMetadata } from "@/config/metadata";
 import { getPostSlugs } from "@/lib/blog";
 

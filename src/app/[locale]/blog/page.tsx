@@ -1,10 +1,10 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { Typography } from "@/components/ui/typography";
 import { getAllPosts } from "@/lib/blog";
+import type { Locale } from "@/lib/locales";
 import { formatPostDate } from "@/lib/utils";
-import { type Locale } from "@/lib/locales";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("blog");
@@ -50,7 +50,8 @@ export default async function BlogPage({
             className="group flex flex-col gap-2 border-b border-border pb-8 last:border-none"
           >
             <span className="text-sm text-stone-500">
-              {formatPostDate(post.date, locale)} · {t("minRead", { count: post.readingMinutes })}
+              {formatPostDate(post.date, locale)} ·{" "}
+              {t("minRead", { count: post.readingMinutes })}
             </span>
             <Typography
               variant="h3"
@@ -58,9 +59,7 @@ export default async function BlogPage({
             >
               {post.title}
             </Typography>
-            <Typography className="text-stone-400">
-              {post.description}
-            </Typography>
+            <Typography className="text-stone-400">{post.description}</Typography>
           </Link>
         ))}
       </section>

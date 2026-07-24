@@ -5,7 +5,7 @@ import { localeCodes } from "../lib/locales";
 export default getRequestConfig(async ({ requestLocale }) => {
   const locale = await requestLocale;
 
-  if (!locale || !localeCodes.includes(locale as any)) notFound();
+  if (!locale || !localeCodes.includes(locale)) notFound();
 
   return {
     locale,

@@ -1,21 +1,15 @@
 "use client";
-import { useRef } from "react";
+import { type MotionValue, motion, useScroll, useTransform } from "framer-motion";
+import { ReactLenis } from "lenis/react";
+import { MoveRight } from "lucide-react";
 import Image from "next/image";
-
 import { useTranslations } from "next-intl";
 import { useTransitionRouter } from "next-view-transitions";
-
-import { ReactLenis } from "lenis/react";
-import { useTransform, motion, useScroll, MotionValue } from "framer-motion";
-import { Button } from "./ui/button";
-import { MoveRight } from "lucide-react";
+import { useRef } from "react";
 import type { Project } from "@/data/projects";
+import { Button } from "./ui/button";
 
-export default function StackingCards({
-  projects,
-}: {
-  projects: Project[];
-}): JSX.Element {
+export default function StackingCards({ projects }: { projects: Project[] }) {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -28,7 +22,7 @@ export default function StackingCards({
           const targetScale = 1 - (projects.length - i) * 0.05;
           return (
             <Card
-              key={`p_${i}`}
+              key={project.link}
               i={i}
               url={project.link}
               title={project.title}
@@ -58,7 +52,7 @@ interface CardProps {
   targetScale: number;
 }
 
-export const Card: React.FC<CardProps> = ({
+export function Card({
   i,
   title,
   description,
@@ -68,7 +62,7 @@ export const Card: React.FC<CardProps> = ({
   range,
   targetScale,
   imageUrl,
-}) => {
+}: CardProps) {
   const t = useTranslations("home");
   const router = useTransitionRouter();
   const container = useRef(null);
@@ -92,12 +86,12 @@ export const Card: React.FC<CardProps> = ({
           scale,
           top: `calc(-5vh + ${i * 25}px)`,
         }}
-        className={`flex flex-col relative -top-[5%] h-[450px] w-[100%] rounded-md p-10 origin-top`}
+        className="flex flex-col relative -top-[5%] h-[450px] w-[100%] rounded-md p-10 origin-top"
       >
         <h2 className="text-2xl text-left font-semibold text-black">{title}</h2>
 
-        <div className={`flex md:flex-row flex-col-reverse h-full mt-5 gap-5`}>
-          <div className={`w-[100%] md:w-[40%] relative top-[10%]`}>
+        <div className="flex md:flex-row flex-col-reverse h-full mt-5 gap-5">
+          <div className="w-[100%] md:w-[40%] relative top-[10%]">
             <p className="text-sm text-black">{description}</p>
             <span className="flex items-center gap-2 pt-2">
               <Button
@@ -111,21 +105,22 @@ export const Card: React.FC<CardProps> = ({
             </span>
           </div>
 
-          <div
-            className={`relative w-[100%] md:w-[60%] h-full rounded-lg overflow-hidden `}
-          >
-            <motion.div
-              className={`w-full h-full`}
-              style={{ scale: imageScale }}
-            >
-              <Image fill src={imageUrl} alt={title} className="object-cover" />
+          <div className="relative w-[100%] md:w-[60%] h-full rounded-lg overflow-hidden">
+            <motion.div className="w-full h-full" style={{ scale: imageScale }}>
+              <Image
+                fill
+                src={imageUrl}
+                alt={title}
+                className="object-cover"
+                sizes="(min-width: 768px) 60vw, 100vw"
+              />
             </motion.div>
           </div>
         </div>
       </motion.div>
     </div>
   );
-};
+}
 
 function slideInOut() {
   document.documentElement.animate(

@@ -1,6 +1,6 @@
-import { locales, defaultLocale } from "@/lib/locales";
+import type { NextRequest, NextResponse } from "next/server";
 import createMiddleware from "next-intl/middleware";
-import { type NextRequest, type NextResponse } from "next/server";
+import { defaultLocale, locales } from "@/lib/locales";
 
 const localesCodes = locales.map((locale) => locale.code);
 

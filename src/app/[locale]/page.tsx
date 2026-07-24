@@ -1,8 +1,8 @@
 import Link from "next/link";
-import StackingCards from "@/components/stacking-card";
-import { HyperText } from "@/components/hyper-text";
-import { Typography } from "@/components/ui/typography";
 import { getTranslations } from "next-intl/server";
+import { HyperText } from "@/components/hyper-text";
+import StackingCards from "@/components/stacking-card";
+import { Typography } from "@/components/ui/typography";
 import { getProjects } from "@/data/projects";
 
 const randomThoughts = [
@@ -33,9 +33,7 @@ export default async function Home() {
               className="font-semibold tracking-wide text-stone-400 text-lg"
             >
               {t.rich("home.experience", {
-                b: (v) => (
-                  <span className="text-gray-50 tracking-wide">{v}</span>
-                ),
+                b: (v) => <span className="text-gray-50 tracking-wide">{v}</span>,
               })}
             </Typography>
 
@@ -44,9 +42,7 @@ export default async function Home() {
               className="font-semibold tracking-wide text-stone-400 text-lg"
             >
               {t.rich("home.specialized", {
-                b: (v) => (
-                  <span className="text-gray-50 tracking-wide">{v}</span>
-                ),
+                b: (v) => <span className="text-gray-50 tracking-wide">{v}</span>,
               })}
             </Typography>
           </div>

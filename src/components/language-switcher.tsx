@@ -1,8 +1,8 @@
 "use client";
 
-import { locales, defaultLocale } from "@/lib/locales";
-import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
+import { defaultLocale, locales } from "@/lib/locales";
 
 export default function LocaleSwitcher() {
   const locale = useLocale();
@@ -23,6 +23,7 @@ export default function LocaleSwitcher() {
         ? pathWithoutLocale
         : `/${newLocale}${pathWithoutLocale}`;
 
+    // biome-ignore lint/suspicious/noDocumentCookie: setting a simple client-side locale preference, no server sync needed
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
     router.push(localizedPath);
   };

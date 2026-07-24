@@ -1,5 +1,5 @@
-import { Typography } from "@/components/ui/typography";
 import { getTranslations } from "next-intl/server";
+import { Typography } from "@/components/ui/typography";
 
 type ProjectPageProps = {
   projectKey: "omnia" | "squarefox" | "hermes" | "vulcano";

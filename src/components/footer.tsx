@@ -1,9 +1,8 @@
-import React from "react";
-import Link from "next/link";
-import { Typography } from "./ui/typography";
 import { ArrowUpRight } from "lucide-react";
-import { siteMetadata } from "@/config/metadata";
+import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import { siteMetadata } from "@/config/metadata";
+import { Typography } from "./ui/typography";
 
 async function Footer() {
   const t = await getTranslations();

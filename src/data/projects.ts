@@ -7,7 +7,9 @@ export type Project = {
 };
 
 export function getProjects(
-  t: (key: `projects.${"omnia" | "squarefox" | "hermes" | "vulcano"}.description`) => string
+  t: (
+    key: `projects.${"omnia" | "squarefox" | "hermes" | "vulcano"}.description`
+  ) => string
 ): Project[] {
   return [
     {

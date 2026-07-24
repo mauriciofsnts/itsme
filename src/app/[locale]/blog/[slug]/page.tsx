@@ -3,15 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Typography } from "@/components/ui/typography";
-import {
-  getAllPosts,
-  getPostBySlug,
-  getPostSlugs,
-  renderPostContent,
-} from "@/lib/blog";
-import { formatPostDate } from "@/lib/utils";
 import { siteMetadata } from "@/config/metadata";
-import { type Locale } from "@/lib/locales";
+import { getAllPosts, getPostBySlug, getPostSlugs, renderPostContent } from "@/lib/blog";
+import type { Locale } from "@/lib/locales";
+import { formatPostDate } from "@/lib/utils";
 
 export function generateStaticParams() {
   return getPostSlugs().map((slug) => ({ slug }));
@@ -66,10 +61,7 @@ export default async function BlogPostPage({
           {formatPostDate(post.date, locale)} ·{" "}
           {t("minRead", { count: post.readingMinutes })}
         </span>
-        <Typography
-          variant="h1"
-          className="text-3xl tracking-wide font-bold lg:text-5xl"
-        >
+        <Typography variant="h1" className="text-3xl tracking-wide font-bold lg:text-5xl">
           {post.title}
         </Typography>
         <Typography variant="lead" className="text-stone-400">
@@ -91,6 +83,7 @@ export default async function BlogPostPage({
 
       <div
         className="prose prose-invert prose-stone max-w-none px-6 sm:px-10 prose-headings:tracking-wide prose-a:text-stone-50 prose-code:before:content-none prose-code:after:content-none"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: html is generated from our own trusted MDX content at build time, not user input
         dangerouslySetInnerHTML={{ __html: html }}
       />
 

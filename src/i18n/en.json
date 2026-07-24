@@ -3,6 +3,16 @@
     "title": "Mauricio Ferraz",
     "description": "Welcome to my personal website, where you can explore my creative world through my portfolio, blog, and projects. Dive into my journey of design, development, and reflections as you browse through my creations."
   },
+  "nav": {
+    "blog": "Blog",
+    "linkedin": "Linkedin",
+    "github": "Github"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "backHome": "Back to home"
+  },
   "footer": {
     "getInTouch": "Get in touch",
     "connectOnLinkedin": "Connect on Linkedin"
