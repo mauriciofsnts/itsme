@@ -10,7 +10,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Copy only package manifests first to leverage Docker cache for dependencies.
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN corepack install
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
