@@ -4,13 +4,9 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Typography } from "@/components/ui/typography";
 import { siteMetadata } from "@/config/metadata";
-import { getAllPosts, getPostBySlug, getPostSlugs, renderPostContent } from "@/lib/blog";
+import { getAllPosts, getPostBySlug, renderPostContent } from "@/lib/blog";
 import type { Locale } from "@/lib/locales";
 import { formatPostDate } from "@/lib/utils";
-
-export function generateStaticParams() {
-  return getPostSlugs().map((slug) => ({ slug }));
-}
 
 export async function generateMetadata({
   params,
