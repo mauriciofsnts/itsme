@@ -16,6 +16,12 @@ const Header = () => {
       </Link>
 
       <div className="flex flex-wrap items-center sm:justify-normal justify-end gap-1 sm:gap-3">
+        <Link href="/blog">
+          <Button variant="link" className="font-bold text-sm sm:text-base">
+            Blog
+          </Button>
+        </Link>
+
         <Link href={siteMetadata.linkedin} target="_blank">
           <Button variant="link" className="font-bold text-sm sm:text-base">
             <Linkedin className="md:hidden block" />

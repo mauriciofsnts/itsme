@@ -16,6 +16,15 @@
     "soon": "Soon",
     "seeMore": "See more"
   },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Notes on software engineering, infrastructure, and digital identity.",
+    "metaTitle": "Blog — Mauricio Ferraz",
+    "metaDescription": "Notes on software engineering, infrastructure, and digital identity.",
+    "empty": "No posts published yet.",
+    "minRead": "{count, plural, one {# min read} other {# min read}}",
+    "more": "Keep reading"
+  },
   "projects": {
     "keycloak": {
       "title": "Keycloak Customization: A Step-by-Step Guide to Themes and Interfaces",
