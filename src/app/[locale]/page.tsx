@@ -1,8 +1,15 @@
-import StackingCards from "@/components/stacking-card";
-import { HyperText } from "@/components/hyper-text";
-import { Typography } from "@/components/ui/typography";
+import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import { HyperText } from "@/components/hyper-text";
+import StackingCards from "@/components/stacking-card";
+import { Typography } from "@/components/ui/typography";
 import { getProjects } from "@/data/projects";
+
+const randomThoughts = [
+  { key: "keycloak", href: "/blog/keycloak-personalizacao-temas" },
+  { key: "omnia", href: null },
+  { key: "squarefox", href: null },
+] as const;
 
 export default async function Home() {
   const t = await getTranslations();
@@ -26,9 +33,7 @@ export default async function Home() {
               className="font-semibold tracking-wide text-stone-400 text-lg"
             >
               {t.rich("home.experience", {
-                b: (v) => (
-                  <span className="text-gray-50 tracking-wide">{v}</span>
-                ),
+                b: (v) => <span className="text-gray-50 tracking-wide">{v}</span>,
               })}
             </Typography>
 
@@ -37,9 +42,7 @@ export default async function Home() {
               className="font-semibold tracking-wide text-stone-400 text-lg"
             >
               {t.rich("home.specialized", {
-                b: (v) => (
-                  <span className="text-gray-50 tracking-wide">{v}</span>
-                ),
+                b: (v) => <span className="text-gray-50 tracking-wide">{v}</span>,
               })}
             </Typography>
           </div>
@@ -61,19 +64,32 @@ export default async function Home() {
         <Typography variant="h3">{t("home.randomToughts")}</Typography>
 
         <div>
-          {[
-            t("projects.keycloak.title"),
-            t("projects.omnia.title"),
-            t("projects.squarefox.title"),
-          ].map((v) => (
-            <div
-              className="flex flex-col sm:flex-row md:py-0 py-3 w-full justify-between text-stone-500 select-none cursor-pointer"
-              key={v}
-            >
-              <Typography variant="h4">{v}</Typography>
-              <HyperText className="text-lg">{t("home.soon")}</HyperText>
-            </div>
-          ))}
+          {randomThoughts.map(({ key, href }) => {
+            const title = t(`projects.${key}.title`);
+
+            if (href) {
+              return (
+                <Link
+                  href={href}
+                  key={key}
+                  className="flex flex-col sm:flex-row md:py-0 py-3 w-full justify-between text-stone-500 hover:text-stone-300 transition-colors"
+                >
+                  <Typography variant="h4">{title}</Typography>
+                  <HyperText className="text-lg">{t("home.seeMore")}</HyperText>
+                </Link>
+              );
+            }
+
+            return (
+              <div
+                className="flex flex-col sm:flex-row md:py-0 py-3 w-full justify-between text-stone-500 select-none cursor-pointer"
+                key={key}
+              >
+                <Typography variant="h4">{title}</Typography>
+                <HyperText className="text-lg">{t("home.soon")}</HyperText>
+              </div>
+            );
+          })}
         </div>
       </section>
     </div>

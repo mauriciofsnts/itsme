@@ -3,6 +3,16 @@
     "title": "Mauricio Ferraz",
     "description": "Bem-vindo ao meu site pessoal, onde você pode explorar meu mundo criativo através do meu portfólio, blog e projetos. Mergulhe na minha jornada de design, desenvolvimento e reflexões enquanto navega pelas minhas criações."
   },
+  "nav": {
+    "blog": "Blog",
+    "linkedin": "Linkedin",
+    "github": "Github"
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "description": "A página que você procura não existe ou foi movida.",
+    "backHome": "Voltar para o início"
+  },
   "footer": {
     "getInTouch": "Entre em contato",
     "connectOnLinkedin": "Conectar no LinkedIn"
@@ -15,6 +25,15 @@
     "randomToughts": "Ideias Aleatórias",
     "soon": "Em breve",
     "seeMore": "Ver mais"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Notas sobre engenharia de software, infraestrutura e identidade digital.",
+    "metaTitle": "Blog — Mauricio Ferraz",
+    "metaDescription": "Notas sobre engenharia de software, infraestrutura e identidade digital.",
+    "empty": "Nenhum post publicado ainda.",
+    "minRead": "{count, plural, one {# minuto de leitura} other {# minutos de leitura}}",
+    "more": "Continue lendo"
   },
   "projects": {
     "keycloak": {

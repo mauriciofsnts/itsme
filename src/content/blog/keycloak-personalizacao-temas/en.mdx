@@ -1,0 +1,293 @@
+---
+title: "Keycloak Customization: A Step-by-Step Guide to Themes and Interfaces"
+description: "How to create, package, and ship a custom Keycloak theme for login, account, and email screens without breaking future upgrades."
+date: "2026-07-23"
+tags: ["Keycloak", "IAM", "Frontend", "DevOps"]
+---
+
+Every time a user lands on your product's login screen, they're technically
+leaving your application and entering Keycloak's. If the theme still looks
+like the stock gray box with the official logo, that transition breaks
+brand trust — and in white-label setups it's simply not acceptable.
+
+The good news is that Keycloak was designed to be themeable at every stage
+of the flow: login, user account, transactional emails, and even the admin
+console. This guide walks through the approach I use in production to
+build a theme from scratch while staying compatible with future Keycloak
+upgrades.
+
+## Anatomy of a Keycloak theme
+
+A Keycloak theme isn't a single bundle — it's split into **types**, each
+covering a different part of the experience:
+
+- **login** — authentication, registration, password reset, OTP screens,
+  and so on.
+- **account** — the self-service console where users manage their own
+  data, sessions, and credentials.
+- **admin** — the admin console (rarely worth customizing).
+- **email** — transactional email templates (verification, password reset,
+  invitations).
+
+Inside a Keycloak installation, themes live under `themes/<theme-name>`,
+and each type has its own subfolder:
+
+```
+themes/
+└── acme/
+    ├── login/
+    │   ├── theme.properties
+    │   ├── resources/
+    │   │   ├── css/
+    │   │   ├── img/
+    │   │   └── js/
+    │   └── messages/
+    │       └── messages_en.properties
+    ├── account/
+    │   └── theme.properties
+    └── email/
+        ├── theme.properties
+        └── html/
+```
+
+Each theme type has its own `theme.properties`, and the most important
+field in that file is `parent`:
+
+```properties
+parent=keycloak
+import=common/keycloak
+```
+
+This tells Keycloak "inherit everything from the base `keycloak` theme and
+only override what I explicitly redefine here." That inheritance mechanism
+is what keeps your theme small and resilient to upgrades — you never touch
+the base theme, you only extend it.
+
+## Setting up a local environment
+
+To iterate quickly, mount your themes directory as a volume on a Keycloak
+instance running in dev mode. That avoids rebuilding an image for every CSS
+tweak.
+
+```yaml
+# docker-compose.yml
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0
+    command: start-dev
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      # Disable theme and template caching in dev so changes show up
+      # without restarting the container
+      KC_SPI_THEME_STATIC_MAX_AGE: "-1"
+      KC_SPI_THEME_CACHE_THEMES: "false"
+      KC_SPI_THEME_CACHE_TEMPLATES: "false"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./themes/acme:/opt/keycloak/themes/acme
+```
+
+Start it with `docker compose up` and open the admin console at
+`localhost:8080`. With caching disabled, a simple refresh on the login page
+after saving a file is enough to see the result.
+
+## Scaffolding the theme
+
+Start with the `login` type, since it has the biggest visual impact.
+Create the minimal structure:
+
+```bash
+mkdir -p themes/acme/login/resources/{css,img}
+touch themes/acme/login/theme.properties
+```
+
+And in `theme.properties`:
+
+```properties
+parent=keycloak
+import=common/keycloak
+
+styles=css/login.css
+
+# Enables variables used by the default template, like the footer link
+kcLogoLink=https://acme.com
+```
+
+`styles` points to a CSS file that gets injected **after** the parent
+theme's CSS — meaning anything you declare here overrides Keycloak's
+defaults without having to duplicate the whole stylesheet.
+
+## Overriding colors, logo, and typography
+
+Create `resources/css/login.css` and override only the variables and
+classes you actually need:
+
+```css
+/* themes/acme/login/resources/css/login.css */
+:root {
+  --pf-v5-global--primary-color--100: #7c3aed;
+  --pf-v5-global--BackgroundColor--100: #0f0f13;
+}
+
+#kc-header-wrapper {
+  background-image: url("img/logo.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-indent: -9999px;
+  height: 48px;
+}
+
+.login-pf-page .card-pf {
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+```
+
+Starting with v22, Keycloak's PatternFly-based theme exposes CSS variables
+(`--pf-v5-global--*`) specifically to allow this kind of override without
+rewriting whole components. Always prefer overriding variables over
+copying CSS blocks from the base theme — it drastically shrinks the diff
+you have to maintain across every Keycloak major version.
+
+Drop your logo at `resources/img/logo.svg`.
+
+## Overriding a FreeMarker template
+
+Sometimes a CSS variable isn't enough — you need to change the HTML
+structure itself, for example to add a support link to the login footer.
+Keycloak templates use FreeMarker (`.ftl`). To override one, copy the
+original file from the `keycloak` base theme (available in Keycloak's
+theme JAR or the official repository) into your theme, keeping the same
+name:
+
+```
+themes/acme/login/template.ftl
+```
+
+Inside it, you can inject your own block while keeping the rest of the
+inherited structure via macros:
+
+```html
+<#-- themes/acme/login/template.ftl (excerpt) -->
+<#import "template.ftl" as parent>
+<@parent.template locale=locale bodyClass=bodyClass>
+  <#nested>
+
+  <footer class="acme-footer">
+    <a href="https://acme.com/support">Need help?</a>
+  </footer>
+</@parent.template>
+```
+
+This "import the parent template and extend it" pattern mirrors the idea
+behind `theme.properties`, just applied to HTML: you reference the
+`parent` explicitly instead of rewriting the whole file from scratch.
+
+## Translating and tweaking messages
+
+Screen text (labels, buttons, errors) lives in per-language `.properties`
+files under `messages/`. To override a specific message — without
+re-translating the entire file — just add the keys you want to change:
+
+```properties
+# themes/acme/login/messages/messages_en.properties
+loginAccountTitle=Sign in to Acme
+doLogIn=Sign in
+invalidPasswordMessage=Incorrect password. Try again or reset your access.
+```
+
+Keycloak merges these keys with the parent theme's automatically — only
+the ones you redefine change, everything else for that language still
+comes from the base `keycloak` theme.
+
+## Customizing the Account Console
+
+Starting with version 24, Keycloak defaults to a new Account Console built
+in React (theme type `keycloak.v2`), replacing the old FreeMarker-based
+one. That changes the customization strategy:
+
+- For **simple visual tweaks** (colors, logo, fonts), the same
+  `theme.properties` + PatternFly CSS variables approach used for login
+  works identically.
+- For **structural changes** (hiding a tab, adding an external link), you
+  need to fork the Account Console v2 source and ship your own build as a
+  theme, since it doesn't expose FTL-based extension points like the old
+  console did.
+
+In practice, for most projects it's worth investing only in the
+`account` theme's CSS/variable layer and leaving the structure as-is — the
+overhead of keeping a React fork in sync with every Keycloak release
+usually costs more than it's worth.
+
+## Packaging the theme for production
+
+In development, mounting the folder as a volume is enough. In production,
+prefer packaging the theme as a JAR, which makes versioning and
+distribution through a Docker image much easier.
+
+The JAR needs a `META-INF/keycloak-themes.json` describing the themes it
+contains:
+
+```json
+{
+  "themes": [
+    {
+      "name": "acme",
+      "types": ["login", "account", "email"]
+    }
+  ]
+}
+```
+
+With that structure in place, build the JAR and copy it into the
+`providers/` folder of a custom Keycloak image:
+
+```dockerfile
+FROM quay.io/keycloak/keycloak:26.0 AS builder
+COPY acme-theme.jar /opt/keycloak/providers/acme-theme.jar
+RUN /opt/keycloak/bin/kc.sh build
+
+FROM quay.io/keycloak/keycloak:26.0
+COPY --from=builder /opt/keycloak /opt/keycloak
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start"]
+```
+
+Running `kc.sh build` in the builder stage is what makes Keycloak
+recognize the new provider and optimize its classpath — skipping this step
+is the most common mistake when moving a theme from dev to production.
+
+## Enabling the theme on a realm
+
+With the theme available on the instance, enable it per realm under
+**Realm settings → Themes**, selecting the `acme` theme for each type
+(Login theme, Account theme, Email theme). Each realm can use a different
+theme — useful if you serve multiple clients with distinct visual
+identities from the same Keycloak instance.
+
+## Best practices to survive the next upgrade
+
+- **Never edit the base `keycloak` theme.** Always extend it via `parent`
+  — that's what keeps a `kc.sh` upgrade from overwriting your work.
+- **Prefer CSS variables over copying entire stylesheets.** Less of your
+  own code to keep in sync with every new PatternFly version.
+- **Version the theme alongside the rest of your infrastructure**,
+  treating the JAR as a normal build artifact, with CI validating that it
+  builds and boots.
+- **Test contrast and readability in both themes (light/dark)** if your
+  product supports both — it's easy to forget dark mode in CSS copied
+  hastily from Figma.
+- **Document which files were overridden and why**, especially `.ftl`
+  ones. A one-line comment at the top of the file saves the team half a
+  day of wondering why the login footer looks different from the rest of
+  the app.
+
+## Conclusion
+
+Customizing Keycloak doesn't require rewriting the platform — it requires
+knowing where the extension points are (`theme.properties`, CSS variables,
+FreeMarker templates, message files) and using inheritance instead of
+wholesale replacement. With a well-organized theme structure, you can carry
+your product's visual identity all the way to the login screen without
+turning every Keycloak upgrade into a headache.

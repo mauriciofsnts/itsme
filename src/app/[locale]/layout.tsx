@@ -1,16 +1,16 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Onest } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { siteMetadata } from "@/config/metadata";
 
 import "../globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import Header from "@/components/header";
-import { cn } from "@/lib/utils";
-import Footer from "@/components/footer";
 import { ViewTransitions } from "next-view-transitions";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
+import { ThemeProvider } from "@/components/theme-provider";
+import { cn } from "@/lib/utils";
 
 const font = Onest({
   subsets: ["latin"],
@@ -48,6 +48,7 @@ export default async function RootLayout({
 }>) {
   const { locale } = await params;
   const messages = await getMessages();
+  const gaId = process.env.GTAG;
 
   return (
     <ViewTransitions>
@@ -69,9 +70,7 @@ export default async function RootLayout({
           </NextIntlClientProvider>
         </body>
 
-        {process.env.NODE_ENV === "production" && (
-          <GoogleAnalytics gaId={process.env.GTAG!} />
-        )}
+        {process.env.NODE_ENV === "production" && gaId && <GoogleAnalytics gaId={gaId} />}
       </html>
     </ViewTransitions>
   );

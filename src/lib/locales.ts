@@ -5,6 +5,6 @@ export const locales = [
 
 export type Locale = (typeof locales)[number]["code"];
 
-export const localeCodes = locales.map((locale) => locale.code);
+export const localeCodes: string[] = locales.map((locale) => locale.code);
 
 export const defaultLocale = locales[0].code;

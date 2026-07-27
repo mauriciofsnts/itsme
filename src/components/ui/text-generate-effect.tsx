@@ -1,6 +1,6 @@
 "use client";
-import { useEffect } from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
+import { useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 export const TextGenerateEffect = ({
@@ -13,6 +13,7 @@ export const TextGenerateEffect = ({
   const [scope, animate] = useAnimate();
   const wordsArray = words.split(" ");
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: `words` isn't read here, but changing it must re-trigger the reveal animation
   useEffect(() => {
     animate(
       "span",
@@ -31,6 +32,7 @@ export const TextGenerateEffect = ({
       <motion.div ref={scope}>
         {wordsArray.map((word, idx) => {
           return (
+            // biome-ignore lint/suspicious/noArrayIndexKey: word list is static and never reordered; index disambiguates repeated words
             <motion.span key={word + idx} className=" text-black opacity-0">
               {word}{" "}
             </motion.span>

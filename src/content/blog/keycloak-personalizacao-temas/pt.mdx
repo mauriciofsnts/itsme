@@ -1,0 +1,294 @@
+---
+title: "Personalização do Keycloak: Um Guia Passo a Passo para Temas e Interfaces"
+description: "Como criar, empacotar e publicar um tema customizado no Keycloak para as telas de login, conta e e-mail, sem perder a compatibilidade com upgrades."
+date: "2026-07-23"
+tags: ["Keycloak", "IAM", "Frontend", "DevOps"]
+---
+
+Toda vez que um usuário chega na tela de login de um produto, ele está, na
+prática, saindo da sua aplicação e entrando na do Keycloak. Se o tema
+continuar com a cara padrão do projeto (o famoso fundo cinza com o logo
+oficial), essa transição quebra a confiança na marca — e em ambientes
+white-label é simplesmente inaceitável.
+
+A boa notícia é que o Keycloak foi desenhado para ser tematizável em cada
+etapa do fluxo: login, conta do usuário, e-mails transacionais e até o
+console administrativo. Neste guia eu mostro o caminho que uso em produção
+para criar um tema do zero, mantendo compatibilidade com upgrades futuros do
+Keycloak.
+
+## Anatomia de um tema no Keycloak
+
+Um tema no Keycloak não é um pacote único — ele é dividido em **tipos**, e
+cada tipo cobre uma parte diferente da experiência:
+
+- **login** — telas de autenticação, registro, recuperação de senha, OTP etc.
+- **account** — o self-service console onde o usuário gerencia os próprios
+  dados, sessões e credenciais.
+- **admin** — o console administrativo (raramente vale a pena customizar).
+- **email** — os templates de e-mail transacional (verificação, reset de
+  senha, convites).
+
+Dentro da instalação do Keycloak, os temas ficam em `themes/<nome-do-tema>`,
+e cada tipo tem sua própria subpasta:
+
+```
+themes/
+└── acme/
+    ├── login/
+    │   ├── theme.properties
+    │   ├── resources/
+    │   │   ├── css/
+    │   │   ├── img/
+    │   │   └── js/
+    │   └── messages/
+    │       └── messages_en.properties
+    ├── account/
+    │   └── theme.properties
+    └── email/
+        ├── theme.properties
+        └── html/
+```
+
+Cada tipo de tema tem um `theme.properties` próprio, e o mais importante
+campo desse arquivo é o `parent`:
+
+```properties
+parent=keycloak
+import=common/keycloak
+```
+
+Isso diz ao Keycloak "herde tudo do tema base `keycloak` e só sobrescreva o
+que eu explicitamente redefinir aqui". É esse mecanismo de herança que
+permite manter o tema pequeno e resiliente a upgrades — você nunca edita o
+tema base, apenas estende.
+
+## Preparando o ambiente local
+
+Para iterar rápido, monte o diretório de temas como volume num Keycloak
+rodando em modo de desenvolvimento. Isso evita ter que reconstruir imagem a
+cada alteração de CSS.
+
+```yaml
+# docker-compose.yml
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0
+    command: start-dev
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      # Desliga o cache de temas e templates em dev, para refletir
+      # alterações sem reiniciar o container
+      KC_SPI_THEME_STATIC_MAX_AGE: "-1"
+      KC_SPI_THEME_CACHE_THEMES: "false"
+      KC_SPI_THEME_CACHE_TEMPLATES: "false"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./themes/acme:/opt/keycloak/themes/acme
+```
+
+Suba com `docker compose up` e acesse o console administrativo em
+`localhost:8080`. Com as flags de cache desligadas, basta dar refresh na
+página de login depois de salvar um arquivo para ver o resultado.
+
+## Criando o esqueleto do tema
+
+Comece pelo tipo `login`, que é o que gera mais impacto visual. Crie a
+estrutura mínima:
+
+```bash
+mkdir -p themes/acme/login/resources/{css,img}
+touch themes/acme/login/theme.properties
+```
+
+E no `theme.properties`:
+
+```properties
+parent=keycloak
+import=common/keycloak
+
+styles=css/login.css
+
+# Habilita variáveis usadas pelo template padrão, como o texto do rodapé
+kcLogoLink=https://acme.com
+```
+
+O `styles` aponta para um CSS que será injetado **depois** do CSS do tema
+pai — ou seja, tudo que você declarar aqui sobrescreve o padrão do
+Keycloak, sem precisar duplicar a folha de estilos inteira.
+
+## Sobrescrevendo cores, logo e tipografia
+
+Crie `resources/css/login.css` sobrescrevendo apenas as variáveis e classes
+necessárias:
+
+```css
+/* themes/acme/login/resources/css/login.css */
+:root {
+  --pf-v5-global--primary-color--100: #7c3aed;
+  --pf-v5-global--BackgroundColor--100: #0f0f13;
+}
+
+#kc-header-wrapper {
+  background-image: url("img/logo.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-indent: -9999px;
+  height: 48px;
+}
+
+.login-pf-page .card-pf {
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+```
+
+Repare que o Keycloak (a partir da v22, com o novo tema baseado em
+PatternFly) expõe variáveis CSS (`--pf-v5-global--*`) especificamente para
+permitir esse tipo de sobrescrita sem precisar reescrever componentes
+inteiros. Prefira sempre sobrescrever variáveis a copiar blocos de CSS do
+tema base — isso reduz drasticamente o diff que você precisa manter a cada
+major version do Keycloak.
+
+Coloque a logo em `resources/img/logo.svg`.
+
+## Sobrescrevendo um template FreeMarker
+
+Às vezes uma variável CSS não é suficiente — você precisa mudar a estrutura
+HTML, por exemplo para adicionar um link de suporte no rodapé do login.
+Templates do Keycloak usam FreeMarker (`.ftl`). Para sobrescrever um, copie
+o arquivo original do tema `keycloak` (disponível no JAR de temas do
+Keycloak ou no repositório oficial) para dentro do seu tema, mantendo o
+mesmo nome:
+
+```
+themes/acme/login/template.ftl
+```
+
+Dentro dele, você pode inserir seu próprio bloco mantendo o restante da
+estrutura herdada via macros:
+
+```html
+<#-- themes/acme/login/template.ftl (trecho) -->
+<#import "template.ftl" as parent>
+<@parent.template locale=locale bodyClass=bodyClass>
+  <#nested>
+
+  <footer class="acme-footer">
+    <a href="https://acme.com/suporte">Precisa de ajuda?</a>
+  </footer>
+</@parent.template>
+```
+
+Esse padrão de "importar o template pai e estender" é a mesma ideia do
+`theme.properties`, só que aplicado ao HTML: você referencia o `parent`
+explicitamente em vez de reescrever o arquivo inteiro do zero.
+
+## Traduzindo e ajustando mensagens
+
+Textos de tela (labels, botões, erros) vivem em arquivos `.properties` por
+idioma, dentro de `messages/`. Para sobrescrever uma mensagem específica —
+sem precisar traduzir o arquivo inteiro de novo — crie apenas as chaves que
+você quer mudar:
+
+```properties
+# themes/acme/login/messages/messages_pt_BR.properties
+loginAccountTitle=Entrar na Acme
+doLogIn=Entrar
+invalidPasswordMessage=Senha incorreta. Tente novamente ou recupere seu acesso.
+```
+
+O Keycloak faz merge dessas chaves com as do tema pai automaticamente — só
+as que você redefinir mudam, o restante do idioma continua vindo do tema
+base `keycloak`.
+
+## Personalizando o Account Console
+
+A partir da versão 24, o Keycloak passou a usar por padrão um Account
+Console novo, escrito em React (tipo de tema `keycloak.v2`), em vez do
+antigo baseado em FreeMarker puro. Isso muda a estratégia de customização:
+
+- Para **ajustes visuais simples** (cores, logo, fontes), o mesmo mecanismo
+  de `theme.properties` + CSS com variáveis PatternFly funciona igual ao
+  login.
+- Para **mudanças estruturais** (esconder uma aba, adicionar um link
+  externo), você precisa fazer fork do código-fonte do Account Console v2 e
+  publicar seu próprio build como um tema, já que ele não expõe pontos de
+  extensão via FTL como o console antigo.
+
+Na prática, para a maioria dos projetos, vale a pena investir só na camada
+de CSS/variáveis do `account` theme e deixar a estrutura como está — o
+retrabalho de manter um fork do React em sincronia com cada release do
+Keycloak costuma custar mais do que vale.
+
+## Empacotando o tema para produção
+
+Em desenvolvimento, montar a pasta como volume é suficiente. Em produção,
+prefira empacotar o tema como um JAR, o que facilita versionamento e
+distribuição via imagem Docker.
+
+A estrutura do JAR precisa de um `META-INF/keycloak-themes.json`
+descrevendo os temas contidos nele:
+
+```json
+{
+  "themes": [
+    {
+      "name": "acme",
+      "types": ["login", "account", "email"]
+    }
+  ]
+}
+```
+
+Com essa estrutura, gere o JAR e copie para a pasta `providers/` de uma
+imagem customizada do Keycloak:
+
+```dockerfile
+FROM quay.io/keycloak/keycloak:26.0 AS builder
+COPY acme-theme.jar /opt/keycloak/providers/acme-theme.jar
+RUN /opt/keycloak/bin/kc.sh build
+
+FROM quay.io/keycloak/keycloak:26.0
+COPY --from=builder /opt/keycloak /opt/keycloak
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start"]
+```
+
+Rodar `kc.sh build` no passo de builder é o que faz o Keycloak reconhecer o
+novo provider e otimizar o classpath — pular essa etapa é o erro mais comum
+ao mover um tema de dev para produção.
+
+## Ativando o tema no realm
+
+Com o tema disponível na instância, ative-o por realm em **Realm settings
+→ Themes**, selecionando o tema `acme` para cada tipo (Login theme, Account
+theme, Email theme). Cada realm pode usar um tema diferente — útil se você
+atende múltiplos clientes com identidades visuais distintas a partir da
+mesma instância do Keycloak.
+
+## Boas práticas para não sofrer no próximo upgrade
+
+- **Nunca edite o tema `keycloak` base.** Sempre estenda via `parent` — é
+  o que garante que um `kc.sh` de upgrade não sobrescreva seu trabalho.
+- **Prefira variáveis CSS a cópia de estilos inteiros.** Menos código seu
+  para manter sincronizado com cada nova versão do PatternFly.
+- **Versione o tema junto do restante da infraestrutura**, tratando o JAR
+  como um artefato de build normal, com CI validando que ele builda e sobe.
+- **Teste contraste e leitura em ambos os temas (claro/escuro)**, se seu
+  produto suporta os dois — é fácil esquecer o modo escuro num CSS
+  copiado às pressas do Figma.
+- **Documente quais arquivos foram sobrescritos** e por quê, especialmente
+  os `.ftl`. Um comentário de uma linha no topo do arquivo evita que o time
+  perca meio dia entendendo por que o footer do login está diferente do
+  resto da aplicação.
+
+## Conclusão
+
+Personalizar o Keycloak não exige reescrever a plataforma — exige entender
+onde estão os pontos de extensão (`theme.properties`, variáveis CSS,
+templates FreeMarker, arquivos de mensagens) e usar herança em vez de
+substituição total. Com uma estrutura de tema bem organizada, dá para levar
+a identidade visual do produto até a tela de login sem transformar cada
+upgrade do Keycloak numa dor de cabeça.
