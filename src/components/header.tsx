@@ -8,7 +8,7 @@ const Header = async () => {
   const t = await getTranslations("nav");
 
   return (
-    <header className="w-full max-w-7xl flex flex-row justify-between items-center p-10 gap-4 sm:gap-0">
+    <header className="w-full max-w-7xl flex flex-row justify-between items-center md:p-10 p-2 py-5 gap-4 sm:gap-0">
       <Link href="/" className={buttonVariants({ variant: "link", className: "p-0" })}>
         <h1 className="font-bold text-lg sm:text-xl">{siteMetadata.author}</h1>
       </Link>
@@ -48,7 +48,7 @@ const Header = async () => {
           <span className="md:block hidden">{t("github")}</span>
         </Link>
 
-        <span className="font-semibold text-sm sm:text-base">{siteMetadata.email}</span>
+        <span className="font-semibold text-sm sm:text-base hidden md:block">{siteMetadata.email}</span>
       </div>
     </header>
   );
