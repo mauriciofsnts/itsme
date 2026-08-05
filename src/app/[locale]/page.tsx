@@ -21,7 +21,7 @@ export default async function Home() {
       <section className="flex flex-col justify-between p-6 sm:p-10 mt-0 md:mt-16 gap-10 sm:gap-16">
         <Typography
           variant="h1"
-          className="max-w-[720px] text-4xl tracking-wide font-bold lg:text-6xl"
+          className="max-w-180 text-4xl tracking-wide font-bold lg:text-6xl"
         >
           {t("home.title")}
         </Typography>

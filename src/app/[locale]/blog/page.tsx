@@ -29,7 +29,7 @@ export default async function BlogPage({
       <section className="flex flex-col gap-4 p-6 sm:p-10 mt-0 md:mt-16">
         <Typography
           variant="h1"
-          className="max-w-[720px] text-4xl tracking-wide font-bold lg:text-6xl"
+          className="max-w-180 text-4xl tracking-wide font-bold lg:text-6xl"
         >
           {t("title")}
         </Typography>
