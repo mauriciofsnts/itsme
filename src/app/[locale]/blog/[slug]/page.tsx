@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import { MermaidContent } from "@/components/mermaid-content";
 import { Typography } from "@/components/ui/typography";
 import { siteMetadata } from "@/config/metadata";
 import { getAllPosts, getPostBySlug, renderPostContent } from "@/lib/blog";
@@ -77,10 +78,9 @@ export default async function BlogPostPage({
         )}
       </header>
 
-      <div
+      <MermaidContent
+        html={html}
         className="prose prose-invert prose-stone max-w-none px-6 sm:px-10 prose-headings:tracking-wide prose-a:text-stone-50 prose-code:before:content-none prose-code:after:content-none"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: html is generated from our own trusted MDX content at build time, not user input
-        dangerouslySetInnerHTML={{ __html: html }}
       />
 
       {related.length > 0 && (

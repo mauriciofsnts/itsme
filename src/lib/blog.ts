@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import type { Element, Root } from "hast";
 import readingTime from "reading-time";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
@@ -9,6 +10,7 @@ import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
+import { visit } from "unist-util-visit";
 import { defaultLocale, type Locale } from "@/lib/locales";
 
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
@@ -71,12 +73,51 @@ export function getAllPosts(locale: Locale): PostMeta[] {
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
+/**
+ * Pulls ```mermaid fenced blocks out of the normal syntax-highlighting path.
+ * `rehype-pretty-code` would otherwise treat them as regular source code and
+ * render tokenized spans instead of a diagram. By replacing `pre > code` with
+ * a bare `pre.mermaid` holding the raw diagram source (no nested `code`
+ * element), the pretty-code visitor no longer matches the node, and the
+ * client-side `MermaidContent` component picks it up to render the SVG.
+ */
+function rehypeMermaidBlocks() {
+  return (tree: Root) => {
+    visit(tree, "element", (node: Element, index, parent) => {
+      if (node.tagName !== "pre" || index === undefined || !parent) return;
+
+      const code = node.children.find(
+        (child): child is Element => child.type === "element" && child.tagName === "code"
+      );
+      if (!code) return;
+
+      const className = code.properties?.className;
+      const isMermaid =
+        Array.isArray(className) && className.includes("language-mermaid");
+      if (!isMermaid) return;
+
+      const source = code.children
+        .filter((child) => child.type === "text")
+        .map((child) => child.value)
+        .join("");
+
+      parent.children[index] = {
+        type: "element",
+        tagName: "pre",
+        properties: { className: ["mermaid", "not-prose"] },
+        children: [{ type: "text", value: source }],
+      };
+    });
+  };
+}
+
 export async function renderPostContent(content: string): Promise<string> {
   const file = await unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypeSlug)
+    .use(rehypeMermaidBlocks)
     .use(rehypePrettyCode, { theme: "github-dark", keepBackground: false })
     .use(rehypeStringify)
     .process(content);
