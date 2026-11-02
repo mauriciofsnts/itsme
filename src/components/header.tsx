@@ -1,7 +1,7 @@
-import { Github, Linkedin } from "lucide-react";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { siteMetadata } from "@/config/metadata";
+import { Github, Linkedin } from "./brand-icons";
 import { buttonVariants } from "./ui/button";
 
 const Header = async () => {

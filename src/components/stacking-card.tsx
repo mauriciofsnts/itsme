@@ -1,7 +1,7 @@
 "use client";
-import { type MotionValue, motion, useScroll, useTransform } from "framer-motion";
 import { ReactLenis } from "lenis/react";
 import { MoveRight } from "lucide-react";
+import { type MotionValue, motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useTransitionRouter } from "next-view-transitions";

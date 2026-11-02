@@ -1,9 +1,9 @@
-FROM node:24-alpine AS base
+FROM node:26-alpine AS base
 
 # Enable pnpm via corepack for a reproducible package manager version.
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
+RUN npm install -g corepack@0.36.0 && corepack enable
 
 FROM base AS deps
 RUN apk add --no-cache libc6-compat
