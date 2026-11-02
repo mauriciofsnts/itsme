@@ -10,10 +10,10 @@ overrides:
   js-yaml@>=4.0.0 <4.3.0: '>=4.3.0 <5.0.0'
   js-yaml@>=3.0.0 <3.15.2: '>=3.15.2 <4.0.0'
   sharp@<0.35.4: '>=0.35.4 <1.0.0'
-  next@>=13.0.0 <15.5.25: '>=15.5.25 <16.0.0'
-  next@>=14.1.1 <15.5.25: '>=15.5.25 <16.0.0'
-  next@>=12.0.0 <15.5.25: '>=15.5.25 <16.0.0'
-  next@>=15.5.0 <15.5.25: '>=15.5.25 <16.0.0'
+  next@>=13.0.0 <15.5.25: '>=15.5.25 <17.0.0'
+  next@>=14.1.1 <15.5.25: '>=15.5.25 <17.0.0'
+  next@>=12.0.0 <15.5.25: '>=15.5.25 <17.0.0'
+  next@>=15.5.0 <15.5.25: '>=15.5.25 <17.0.0'
   postcss@<=8.5.11: '>=8.5.12'
   nanoid@<3.3.18: '>=3.3.18 <4.0.0'
 
@@ -22,8 +22,8 @@ importers:
   .:
     dependencies:
       '@next/third-parties':
-        specifier: ^15.5.18
-        version: 15.5.28(next@15.5.27(@types/node@24.19.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+        specifier: ^16.4.4
+        version: 16.4.4(next@15.5.27(@types/node@24.19.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-aspect-ratio':
         specifier: ^1.1.2
         version: 1.2.0(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -747,10 +747,10 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@next/third-parties@15.5.28':
-    resolution: {integrity: sha512-YAd1jYQGl8X/DLmYu+od+iwLOterShZUxmMaNQyOhW+dsXnxWH61As/hoUuSfbSektIoQEdjdiMyf8OnSPtZ8w==}
+  '@next/third-parties@16.4.4':
+    resolution: {integrity: sha512-dIdxOALEfAnOs2yU0RmYfHgz0SvlLbzp8QOL8+q7TcFWb24vwPsL7i+MLiHK1Drt7C3oecTczs5ysMoaZpY5iA==}
     peerDependencies:
-      next: '>=15.5.25 <16.0.0'
+      next: '>=15.5.25 <17.0.0'
       react: ^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0
 
   '@oxc-project/types@0.156.0':
@@ -2462,7 +2462,7 @@ packages:
     resolution: {integrity: sha512-uauRtUC+TrYNA1OL/QcwL9irndLrI9jK3Wdaa9W0B5AeKh9cqVdNeT0IWgLnhBqBRrVwppVdI0M+C1+JdGPQ3w==}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      next: '>=15.5.25 <16.0.0'
+      next: '>=15.5.25 <17.0.0'
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0
     peerDependenciesMeta:
       '@types/react':
@@ -2477,7 +2477,7 @@ packages:
   next-view-transitions@0.3.5:
     resolution: {integrity: sha512-yP8OPNydLmKpmE94hLurLGEzPsUy1uyl9iSv8oxaC2JwhSXTD86SVwk1NMMQT7Ado4kMENDJ7fNBIXHy3GU/Lg==}
     peerDependencies:
-      next: '>=15.5.25 <16.0.0'
+      next: '>=15.5.25 <17.0.0'
       react: '>=18.2.0 || ^19.0.0'
       react-dom: '>=18.2.0 || ^19.0.0'
 
@@ -3390,7 +3390,7 @@ snapshots:
   '@next/swc-win32-x64-msvc@15.5.27':
     optional: true
 
-  '@next/third-parties@15.5.28(next@15.5.27(@types/node@24.19.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+  '@next/third-parties@16.4.4(next@15.5.27(@types/node@24.19.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     dependencies:
       next: 15.5.27(@types/node@24.19.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
