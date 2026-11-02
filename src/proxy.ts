@@ -11,7 +11,7 @@ const nextIntlMiddleware = createMiddleware({
   localeDetection: true,
 });
 
-export function middleware(req: NextRequest): NextResponse {
+export function proxy(req: NextRequest): NextResponse {
   return nextIntlMiddleware(req);
 }
 
