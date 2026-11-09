@@ -1,4 +1,4 @@
-FROM node:26-alpine AS base
+FROM node:26.13.0-alpine AS base
 
 # Enable pnpm via corepack for a reproducible package manager version.
 ENV PNPM_HOME="/pnpm"
