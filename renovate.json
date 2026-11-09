@@ -1,33 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "rangeStrategy": "bump",
-  "minimumReleaseAge": "3 days",
+  "extends": ["security:only-security-updates"],
   "internalChecksFilter": "strict",
-  "osvVulnerabilityAlerts": true,
   "vulnerabilityAlerts": {
     "enabled": true,
     "minimumReleaseAge": "1 day",
-    "schedule": ["at any time"],
+    "groupName": "security updates",
+    "groupSlug": "security-updates",
+    "prConcurrentLimit": 1,
     "labels": ["security"]
-  },
-  "packageRules": [
-    {
-      "description": "This parses untrusted input, so its releases go out after one day, the shortest pnpm accepts.",
-      "matchPackageNames": ["next"],
-      "minimumReleaseAge": "1 day",
-      "schedule": ["at any time"],
-      "prPriority": 5
-    },
-    {
-      "matchDepTypes": ["devDependencies"],
-      "groupName": "devDependencies",
-      "groupSlug": "dev-dependencies"
-    },
-    {
-      "matchDepTypes": ["dependencies"],
-      "groupName": "dependencies",
-      "groupSlug": "dependencies"
-    }
-  ]
+  }
 }
