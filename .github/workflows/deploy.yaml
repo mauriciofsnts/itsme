@@ -7,7 +7,10 @@ on:
 
 jobs:
   deploy:
-    uses: mauriciofsnts/zero/.github/workflows/build-push.yaml@master
-    with:
-      image: itsme
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mauriciofsnts/zero/.github/actions/build-push@master
+        with:
+          image: itsme
+          harbor-username: ${{ secrets.HARBOR_USERNAME }}
+          harbor-password: ${{ secrets.HARBOR_PASSWORD }}
