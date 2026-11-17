@@ -1,0 +1,3 @@
+# Deploy do itsme no cluster zero (chart web-app, em mauriciofsnts/zero:gitops/charts/web-app).
+name: itsme
+host: mrzt.dev
